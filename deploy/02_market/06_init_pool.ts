@@ -54,7 +54,7 @@ const func: DeployFunction = async function ({
 
   const isPoolProxyPending =
     (await addressesProviderInstance.getPool()) === ZERO_ADDRESS;
-
+   
   // Set Pool implementation to Addresses provider and save the proxy deployment artifact at disk
   if (isPoolProxyPending) {
     const setPoolImplTx = await waitForTx(

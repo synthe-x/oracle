@@ -69,6 +69,7 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
   )}`,
   [eArbitrumNetwork.arbitrum]: `https://arb1.arbitrum.io/rpc`,
   [eArbitrumNetwork.arbitrumTestnet]: `https://rinkeby.arbitrum.io/rpc`,
+  [eArbitrumNetwork.arbitrumGoerli]: `https://arb-goerli.g.alchemy.com/v2/SOKc_kDyBiZzigpmJR0XwOMxi3B1OFNC`,
   [eEthereumNetwork.rinkeby]: `https://eth-rinkeby.alchemyapi.io/v2/${getAlchemyKey(
     eEthereumNetwork.rinkeby
   )}`,
@@ -84,9 +85,7 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
   [eOptimismNetwork.testnet]: `https://opt-goerli.g.alchemy.com/v2/demo`,
   [eOptimismNetwork.main]: `https://mainnet.optimism.io`,
   tenderly: `https://rpc.tenderly.co/fork/${TENDERLY_FORK_ID}`,
-  [eEthereumNetwork.goerli]: `https://eth-goerli.alchemyapi.io/v2/${getAlchemyKey(
-    eEthereumNetwork.goerli
-  )}`,
+  [eEthereumNetwork.goerli]:"https://rpc.ankr.com/eth_goerli",
   [eEthereumNetwork.sepolia]: `https://eth-sepolia.g.alchemy.com/v2/${getAlchemyKey(
     eEthereumNetwork.sepolia
   )}`,
@@ -97,6 +96,7 @@ export const LIVE_NETWORKS: iParamsPerNetwork<boolean> = {
   [eEthereumNetwork.main]: true,
   [ePolygonNetwork.polygon]: true,
   [eArbitrumNetwork.arbitrum]: true,
+  [eArbitrumNetwork.arbitrumGoerli]: true,
   [eHarmonyNetwork.main]: true,
   [eAvalancheNetwork.avalanche]: true,
   [eFantomNetwork.main]: true,
@@ -118,6 +118,7 @@ export const buildForkConfig = ():
     if (FORK_BLOCK_NUMBER) {
       forkMode.blockNumber = FORK_BLOCK_NUMBER;
     }
+    console.log("Current RPC",NETWORKS_RPC_URL[FORK])
   }
   return forkMode;
 };
@@ -155,7 +156,7 @@ const MNEMONICS: iParamsPerNetwork<string> = {
   [eAvalancheNetwork.fuji]: process.env.FUJI_MNEMONIC,
   [eFantomNetwork.testnet]: process.env.FANTOM_MNEMONIC,
   [eHarmonyNetwork.testnet]: process.env.HARMONY_MNEMONIC,
-  [eArbitrumNetwork.arbitrumTestnet]: process.env.ARBITRUM_MNEMONIC,
+  [eArbitrumNetwork.arbitrumGoerli]: process.env.ARBITRUM_MNEMONIC,
   [ePolygonNetwork.mumbai]: process.env.POLYGON_MUMBAI_MNEMONIC,
   [ePolygonNetwork.polygon]: process.env.POLYGON_MNEMONIC,
 };

@@ -60,6 +60,7 @@ export const MOCK_CHAINLINK_AGGREGATORS_PRICES: { [key: string]: string } = {
   USDC: parseUnits("1", 8).toString(),
   USDT: parseUnits("1", 8).toString(),
   WBTC: parseUnits("60000", 8).toString(),
+  BTC: parseUnits("60000", 8).toString(),
   USD: parseUnits("1", 8).toString(),
   LINK: parseUnits("30", 8).toString(),
   CRV: parseUnits("6", 8).toString(),
@@ -141,6 +142,7 @@ export const EMPTY_STORAGE_SLOT =
 
 export const POOL_ADMIN: Record<string, string> = {
   [eArbitrumNetwork.arbitrum]: "0xbbd9f90699c1FA0D7A65870D241DD1f1217c96Eb",
+  [eArbitrumNetwork.arbitrumGoerli]: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
   [eAvalancheNetwork.avalanche]: "0xa35b76E4935449E33C56aB24b23fcd3246f13470",
   [eFantomNetwork.main]: "0x39CB97b105173b56b5a2b4b33AD25d6a50E6c949",
   [eHarmonyNetwork.main]: "0xb2f0C5f37f4beD2cB51C44653cD5D84866BDcd2D",

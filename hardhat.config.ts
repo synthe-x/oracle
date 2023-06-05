@@ -83,6 +83,10 @@ export default {
       eArbitrumNetwork.arbitrumTestnet,
       421611
     ),
+    [eArbitrumNetwork.arbitrumGoerli]: getCommonNetworkConfig(
+      eArbitrumNetwork.arbitrumGoerli,
+      421613
+    ),
     [eHarmonyNetwork.main]: getCommonNetworkConfig(
       eHarmonyNetwork.main,
       1666600000

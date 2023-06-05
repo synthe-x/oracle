@@ -222,6 +222,7 @@ export const initReservesByHelper = async (
     chunkIndex < chunkedInitInputParams.length;
     chunkIndex++
   ) {
+    
     const tx = await waitForTx(
       await configurator.initReserves(chunkedInitInputParams[chunkIndex])
     );
@@ -240,21 +241,24 @@ export const getPairsTokenAggregator = (
   aggregatorsAddresses: { [tokenSymbol: string]: tEthereumAddress }
 ): [string[], string[]] => {
   const { ETH, USD, ...assetsAddressesWithoutEth } = allAssetsAddresses;
-
+    
   const pairs = Object.entries(assetsAddressesWithoutEth).map(
     ([tokenSymbol, tokenAddress]) => {
       const aggregatorAddressIndex = Object.keys(
         aggregatorsAddresses
       ).findIndex((value) => value === tokenSymbol);
+     
+      if(aggregatorAddressIndex === -1){
+        return []
+      }
       const [, aggregatorAddress] = (
         Object.entries(aggregatorsAddresses) as [string, tEthereumAddress][]
       )[aggregatorAddressIndex];
-      if (!aggregatorAddress) throw `Missing aggregator for ${tokenSymbol}`;
-      if (!tokenAddress) throw `Missing token address for ${tokenSymbol}`;
+
       return [tokenAddress, aggregatorAddress];
     }
-  ) as [string, string][];
-
+  ).filter((e)=> e.length > 1) as [string, string][];
+  
   const mappedPairs = pairs.map(([asset]) => asset);
   const mappedAggregators = pairs.map(([, source]) => source);
 

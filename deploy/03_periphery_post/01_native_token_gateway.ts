@@ -26,6 +26,7 @@ const func: DeployFunction = async function ({
 
   // Local networks that are not live or testnet, like hardhat network, will deploy a WETH9 contract as mockup for testing deployments
   if (isTestnetMarket(poolConfig)) {
+    console.log("token-------------", `${poolConfig.WrappedNativeTokenSymbol}${TESTNET_TOKEN_PREFIX}`);
     wrappedNativeTokenAddress = (
       await deployments.get(
         `${poolConfig.WrappedNativeTokenSymbol}${TESTNET_TOKEN_PREFIX}`

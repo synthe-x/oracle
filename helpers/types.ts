@@ -460,6 +460,7 @@ export interface iAvalancheParamsPerNetwork<T> {
 export interface iArbitrumParamsPerNetwork<T> {
   [eArbitrumNetwork.arbitrum]: T;
   [eArbitrumNetwork.arbitrumTestnet]: T;
+  [eArbitrumNetwork.arbitrumGoerli]: T;
 }
 
 export interface iParamsPerPool<T> {
@@ -509,10 +510,12 @@ export interface IBaseConfiguration {
   VariableDebtTokenNamePrefix: string;
   SymbolPrefix: string;
   ProviderId: number;
+  PythId?: string;
   TestnetMarket?: boolean;
   ProviderRegistryOwner?: iParamsPerNetwork<tEthereumAddress | undefined>;
   FallbackOracle?: iParamsPerNetwork<tEthereumAddress>;
   ChainlinkAggregator: iParamsPerNetwork<ITokenAddress>;
+  PythAggregator: iParamsPerNetwork<ITokenAddress>;
   WrappedTokenGateway?: iParamsPerNetwork<tEthereumAddress>;
   ReserveFactorTreasuryAddress: iParamsPerNetwork<tEthereumAddress>;
   StableDebtTokenImplementation?: iParamsPerNetwork<tEthereumAddress>;

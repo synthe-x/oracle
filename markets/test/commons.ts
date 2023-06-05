@@ -58,11 +58,42 @@ export const CommonsConfig: ICommonConfiguration = {
       EURS: ZERO_ADDRESS,
     },
   },
+  PythAggregator:{
+    [eEthereumNetwork.rinkeby]: {
+      LINK: "0x83be4ed61dd8a3518d198098ce37240c494710a7b9d85e35d9fceac21df08994",
+      USDC: "0x41f3625971ca2ed2263e78573fe5ce23e13d2558ed3f2e47ab0f84fb9e7ae722",
+      DAI: "0x87a67534df591d2dd5ec577ab3c75668a8e3d35e92e27bf29d9e2e52df8de412",
+      WBTC: "0xf9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b",
+      WETH: "0xca80ba6dc32e08d06f1aa886011eed1d77c77be9eb761cc10d72b7d0a2fd57a6",
+      USDT: "0x1fc18861232290221461220bd4e2acd1dcdfbc89c84092c93c18bdc7756c1588",
+      EURS: "0xc1b12769f6633798d45adfd62bfc70114839232e2949b01fb3d3f927d2606154",
+    },
+    [eArbitrumNetwork.arbitrum]: {
+      LINK: "0x8ac0c70fff57e9aefdf5edf44b51d62c2d433653cbb2cf5cc06bb115af04d221",
+      USDC: "0xeaa020c61cc479712813461ce153894a96a6c00b21ed0cfc2798d1f9a9e9c94a",
+      DAI: "0xb0948a5e5313200c632b51bb5ca32f6de0d36e9950a942d19751e833f70dabfd",
+      WBTC: "0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+      WETH: "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+      USDT: "0x2b89b9dc8fdf9f34709a5b106b472f0f39bb6ca9ce04b0fd7f2e971688e2e53b",
+      AAVE: "0x2b9ab1e972a281585084148ba1389800799bd4be63b957507db1349314e47445",
+      // Note: Using EUR/USD Chainlink data feed
+      EURS: "0xa995d00bb36a63cef7fd2c287dc105fc8f3d93779f062f09551b0af3e81ec30b",
+      CUSD: "0x8f218655050a1476b780185e89f19d2b1e1f49e9bd629efad6ac547a946bf6ab",
+      FUSD: "0x8f218655050a1476b780185e89f19d2b1e1f49e9bd629efad6ac547a946bf6ab",
+      CETH: "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+      CDOGE: "0xdcef50dd0a4cd2dcc17e45df1676dcb336a11a61c69df7a0299b0150c672d25c",
+      CBTC: "0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+      FEUR: "0xa995d00bb36a63cef7fd2c287dc105fc8f3d93779f062f09551b0af3e81ec30b",
+      FGPB: "0x84c2dde9633d93d1bcad84e7dc41c9d56578b7ec52fabedc1f335d673df0a7c1",
+    },
+  },
   ReserveFactorTreasuryAddress: {
     [eEthereumNetwork.kovan]: "0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c",
     [eEthereumNetwork.main]: "0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c",
     [eArbitrumNetwork.arbitrumTestnet]:
       "0xeC67987831C4278160D8e652d3edb0Fc45B3766d",
+    [eArbitrumNetwork.arbitrumGoerli]:
+      "0xBf59B84c9a7aD688D87ABe3357f70039C1540006",
     [eEthereumNetwork.rinkeby]: ZERO_ADDRESS,
   },
   FallbackOracle: {
@@ -70,6 +101,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.main]: "0x5b09e578cfeaa23f1b11127a658855434e4f3e09",
     [eArbitrumNetwork.arbitrum]: ZERO_ADDRESS,
     [eArbitrumNetwork.arbitrumTestnet]: ZERO_ADDRESS,
+    [eArbitrumNetwork.arbitrumGoerli]: ZERO_ADDRESS,
     [eEthereumNetwork.rinkeby]: ZERO_ADDRESS,
   },
   ReservesConfig: {},
@@ -79,6 +111,12 @@ export const CommonsConfig: ICommonConfiguration = {
     },
     rewards: {
       [eArbitrumNetwork.arbitrumTestnet]: {
+        CRV: ZERO_ADDRESS,
+        REW: ZERO_ADDRESS,
+        BAL: ZERO_ADDRESS,
+        StkAave: ZERO_ADDRESS,
+      },
+      [eArbitrumNetwork.arbitrumGoerli]: {
         CRV: ZERO_ADDRESS,
         REW: ZERO_ADDRESS,
         BAL: ZERO_ADDRESS,
@@ -105,6 +143,12 @@ export const CommonsConfig: ICommonConfiguration = {
     },
     rewardsOracle: {
       [eArbitrumNetwork.arbitrumTestnet]: {
+        CRV: ZERO_ADDRESS,
+        REW: ZERO_ADDRESS,
+        BAL: ZERO_ADDRESS,
+        StkAave: ZERO_ADDRESS,
+      },
+      [eArbitrumNetwork.arbitrumGoerli]: {
         CRV: ZERO_ADDRESS,
         REW: ZERO_ADDRESS,
         BAL: ZERO_ADDRESS,

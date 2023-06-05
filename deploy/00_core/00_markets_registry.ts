@@ -20,7 +20,7 @@ const func: DeployFunction = async function ({
       ...COMMON_DEPLOY_PARAMS,
     }
   );
-
+  
   const registryInstance = (
     (await hre.ethers.getContractAt(
       poolAddressesProviderRegistryArtifact.abi,

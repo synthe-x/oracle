@@ -9,7 +9,7 @@ This Node.js repository contains the configuration and deployment scripts for th
 a. aave-v3-deploy/markets/aave/reservesConfigs.ts
 b. aave-v3-deploy/markets/arbitrum/index.ts
 c. aave-v3-deploy/helpers/constants.ts
-3. for start deployment "use npx hardhat deploy"
+3. for start deployment "use npx hardhat deploy --network networkName"
 ## Requirements
 
 - Node.js >= 16

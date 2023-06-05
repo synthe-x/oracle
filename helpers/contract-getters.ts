@@ -1,5 +1,5 @@
 import { getFirstSigner } from "./utilities/signer";
-import { StakedTokenTransferStrategy } from "./../typechain";
+import { PythOracle, StakedTokenTransferStrategy } from "./../typechain";
 import { PullRewardsTransferStrategy } from "./../typechain";
 import {
   AaveOracle,
@@ -55,6 +55,7 @@ import {
   STAKE_AAVE_IMPL_V3,
   L2_ENCODER,
   FAUCET_OWNABLE_ID,
+  PYTH_ORACLE_ID,
 } from "./deploy-ids";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { RewardsController } from "../typechain";
@@ -147,6 +148,10 @@ export const getPriceOracle = async (
   address?: tEthereumAddress
 ): Promise<AaveOracle> => getContract("PriceOracle", address);
 
+export const getPythPriceOracle = async (
+  address?: tEthereumAddress
+): Promise<PythOracle> => getContract("PythOracle", address);
+
 export const getIRStrategy = async (
   address: tEthereumAddress
 ): Promise<DefaultReserveInterestRateStrategy> =>
@@ -178,6 +183,14 @@ export const getAaveOracle = async (
   getContract(
     "AaveOracle",
     address || (await hre.deployments.get(ORACLE_ID)).address
+  );
+
+ export const getPythOracle = async (
+  address?: tEthereumAddress
+): Promise<PythOracle> =>
+  getContract(
+    "PythOracle",
+    address || (await hre.deployments.get(PYTH_ORACLE_ID)).address
   );
 
 export const getFallbackOracle = async (
@@ -221,7 +234,7 @@ export const getMockPool = async (
 
 export const getMockL2Pool = async (
   address?: tEthereumAddress
-): Promise<MockPool> => getContract("MockL2Pool", address);
+): Promise<MockPool> => getContract("L2Pool", address);
 
 export const getMockInitializableImple = async (
   address?: tEthereumAddress

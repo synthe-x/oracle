@@ -275,6 +275,46 @@ export const getChainlinkOracles = async (
   }, {});
 };
 
+export const getPythOracles = async (
+  poolConfig: IBaseConfiguration,
+  network: eNetwork
+) => {
+  // const isLive = hre.config.networks[network].live;
+  const isLive = true;
+  if (isLive) {
+    console.log("[NOTICE] Using PythAggregator from configuration file");
+    // console.log("--------------------------", poolConfig.PythAggregator,network);
+    return (
+      getParamPerNetwork<ITokenAddress>(
+        poolConfig.PythAggregator,
+        network
+      ) || {}
+    );
+  }
+  console.log(
+    "[WARNING] Using deployed Mock Price Aggregators instead of PythAggregator from configuration file"
+  );
+  let rewardKeys: string[] = [];
+
+  if (isIncentivesEnabled(poolConfig)) {
+    rewardKeys = await getSymbolsByPrefix(TESTNET_REWARD_TOKEN_PREFIX);
+  }
+
+  const reservesKeys = Object.keys(poolConfig.ReservesConfig);
+  const allDeployments = await hre.deployments.all();
+  const testnetKeys = Object.keys(allDeployments).filter(
+    (key) =>
+      key.includes(TESTNET_PRICE_AGGR_PREFIX) &&
+      (reservesKeys.includes(key.replace(TESTNET_PRICE_AGGR_PREFIX, "")) ||
+        rewardKeys.includes(key.replace(TESTNET_PRICE_AGGR_PREFIX, "")))
+  );
+  return testnetKeys.reduce<any>((acc, key) => {
+    const symbol = key.replace(TESTNET_PRICE_AGGR_PREFIX, "");
+    acc[symbol] = allDeployments[key].address;
+    return acc;
+  }, {});
+};
+
 export const getTreasuryAddress = async (
   poolConfig: IBaseConfiguration,
   network: eNetwork

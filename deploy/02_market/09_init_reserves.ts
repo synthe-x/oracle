@@ -115,6 +115,7 @@ func.dependencies = [
   "provider",
   "init-pool",
   "oracles",
+  "pythOracle"
 ];
 
 func.skip = async () => checkRequiredEnvironment();

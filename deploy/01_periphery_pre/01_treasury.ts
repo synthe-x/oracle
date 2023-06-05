@@ -53,12 +53,13 @@ const func: DeployFunction = async function ({
   if (isTestnetMarket(await loadPoolConfig(MARKET_NAME))) {
     treasuryOwner = deployer;
   }
-
+  
   if (treasuryAddress && getAddress(treasuryAddress) !== ZERO_ADDRESS) {
     const treasuryContract = await AaveEcosystemReserveV2__factory.connect(
       treasuryAddress,
       await getFirstSigner()
     );
+    console.log(treasuryContract)
     const controller = await treasuryContract.getFundsAdmin();
     const impl = await getProxyImplementationBySlot(treasuryAddress);
 

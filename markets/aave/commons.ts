@@ -55,11 +55,35 @@ export const CommonsConfig: ICommonConfiguration = {
       EURS: ZERO_ADDRESS,
     },
   },
+  PythAggregator: {
+    [eEthereumNetwork.main]: {
+      AAVE: "0x547a514d5e3769680Ce22B2361c10Ea13619e8a9",
+      DAI: "0xAed0c38402a5d19df6E4c03F4E2DceD6e29c1ee9",
+      LINK: "0x2c1d072e956AFFC0D435Cb7AC38EF18d24d9127c",
+      USDC: "0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6",
+      WBTC: "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      WETH: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      USDT: "0x3E7d1eAB13ad0104d2750B8863b489D65364e32D",
+      // Note: EUR/USD, not EURS dedicated oracle
+      EURS: "0xb49f677943BC038e9857d61E7d053CaA2C1734C1",
+    },
+    [eEthereumNetwork.rinkeby]: {
+      LINK: ZERO_ADDRESS,
+      USDC: ZERO_ADDRESS,
+      DAI: ZERO_ADDRESS,
+      WBTC: ZERO_ADDRESS,
+      WETH: ZERO_ADDRESS,
+      USDT: ZERO_ADDRESS,
+      EURS: ZERO_ADDRESS,
+    },
+  },
   ReserveFactorTreasuryAddress: {
     [eEthereumNetwork.kovan]: "0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c",
     [eEthereumNetwork.main]: "0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c",
     [eArbitrumNetwork.arbitrumTestnet]:
       "0xeC67987831C4278160D8e652d3edb0Fc45B3766d",
+    [eArbitrumNetwork.arbitrumGoerli]:
+      ZERO_ADDRESS,
     [eEthereumNetwork.rinkeby]: ZERO_ADDRESS,
   },
   FallbackOracle: {
@@ -67,6 +91,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.main]: ZERO_ADDRESS,
     [eArbitrumNetwork.arbitrum]: ZERO_ADDRESS,
     [eArbitrumNetwork.arbitrumTestnet]: ZERO_ADDRESS,
+    [eArbitrumNetwork.arbitrumGoerli]: ZERO_ADDRESS,
     [eEthereumNetwork.rinkeby]: ZERO_ADDRESS,
   },
   ReservesConfig: {},
@@ -86,6 +111,12 @@ export const CommonsConfig: ICommonConfiguration = {
         BAL: ZERO_ADDRESS,
         StkAave: ZERO_ADDRESS,
       },
+      [eArbitrumNetwork.arbitrumGoerli]: {
+        CRV: ZERO_ADDRESS,
+        REW: ZERO_ADDRESS,
+        BAL: ZERO_ADDRESS,
+        StkAave: ZERO_ADDRESS,
+      },
       [eEthereumNetwork.kovan]: {
         StkAave: ZERO_ADDRESS,
       },
@@ -100,6 +131,12 @@ export const CommonsConfig: ICommonConfiguration = {
         REW: ZERO_ADDRESS,
         BAL: ZERO_ADDRESS,
       },
+      [eArbitrumNetwork.arbitrumGoerli]: {
+        StkAave: ZERO_ADDRESS,
+        CRV: ZERO_ADDRESS,
+        REW: ZERO_ADDRESS,
+        BAL: ZERO_ADDRESS,
+      },
       [eEthereumNetwork.kovan]: {
         StkAave: ZERO_ADDRESS,
       },
@@ -109,6 +146,38 @@ export const CommonsConfig: ICommonConfiguration = {
     },
     incentivesInput: {
       [eArbitrumNetwork.arbitrumTestnet]: [
+        {
+          emissionPerSecond: "34629756533",
+          duration: 7890000,
+          asset: "DAI",
+          assetType: AssetType.AToken,
+          reward: "CRV",
+          rewardOracle: "0",
+          transferStrategy: TransferStrategy.PullRewardsStrategy,
+          transferStrategyParams: "0",
+        },
+        {
+          emissionPerSecond: "300801036720127500",
+          duration: 7890000,
+          asset: "USDC",
+          assetType: AssetType.AToken,
+          reward: "REW",
+          rewardOracle: "0",
+          transferStrategy: TransferStrategy.PullRewardsStrategy,
+          transferStrategyParams: "0",
+        },
+        {
+          emissionPerSecond: "300801036720127500",
+          duration: 7890000,
+          asset: "LINK",
+          assetType: AssetType.AToken,
+          reward: "REW",
+          rewardOracle: "0",
+          transferStrategy: TransferStrategy.PullRewardsStrategy,
+          transferStrategyParams: "0",
+        },
+      ],
+      [eArbitrumNetwork.arbitrumGoerli]: [
         {
           emissionPerSecond: "34629756533",
           duration: 7890000,
@@ -156,6 +225,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eArbitrumNetwork.arbitrum]: true,
     [eArbitrumNetwork.goerliNitro]: true,
     [eArbitrumNetwork.arbitrumTestnet]: true,
+    [eArbitrumNetwork.arbitrumGoerli]: true,
     [eOptimismNetwork.main]: true,
     [eOptimismNetwork.testnet]: true,
   },
