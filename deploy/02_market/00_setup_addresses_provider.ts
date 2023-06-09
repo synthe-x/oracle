@@ -64,7 +64,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const addressesProviderArtifact = await deploy(POOL_ADDRESSES_PROVIDER_ID, {
     from: deployer,
     contract: "PoolAddressesProvider",
-    args: ["0", deployer, poolConfig?.PythId],
+    args: ["0", deployer],
     ...COMMON_DEPLOY_PARAMS,
   });
   const signer = await hre.ethers.getSigner(deployer);
@@ -82,10 +82,10 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   );
 
   // set the PythId
-  if(poolConfig.PythId)
-    await waitForTx(
-      await addressesProviderInstance.setPythId(poolConfig.PythId)
-    );
+  // if(poolConfig.PythId)
+  //   await waitForTx(
+  //     await addressesProviderInstance.setPythId(poolConfig.PythId)
+  //   );
 
   // 3. Add AddressesProvider to Registry
   await addMarketToRegistry(
