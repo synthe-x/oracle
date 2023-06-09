@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import {IPythOracle, IPythOracleGetter} from "./IPythOracle.sol";
 import "./synthex/SyntheX.sol";
-import "../aave-v3-core/contracts/dependencies/chainlink/AggregatorInterface.sol";
+import "./aave-core-v3/contracts/dependencies/chainlink/AggregatorInterface.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@pythnetwork/pyth-sdk-solidity/IPyth.sol";
 import "@pythnetwork/pyth-sdk-solidity/PythStructs.sol";
