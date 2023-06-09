@@ -65,5 +65,6 @@ const func: DeployFunction = async function ({
 
 func.id = "L2PoolImplementations";
 func.tags = ["market"];
+func.dependencies = ["oracle","pythOracle"];
 
 export default func;

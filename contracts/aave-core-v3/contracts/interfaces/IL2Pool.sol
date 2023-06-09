@@ -16,7 +16,7 @@ interface IL2Pool {
    * type(uint256).max
    * @dev assetId is the index of the asset in the reservesList.
    */
-  function supply(bytes32 args) external;
+  function supply(bytes32 args, bytes[] calldata pythUpdateData) external;
 
   /**
    * @notice Calldata efficient wrapper of the supplyWithPermit function on behalf of the caller
@@ -29,7 +29,7 @@ interface IL2Pool {
    * @param r The R parameter of ERC712 permit sig
    * @param s The S parameter of ERC712 permit sig
    */
-  function supplyWithPermit(bytes32 args, bytes32 r, bytes32 s) external;
+  function supplyWithPermit(bytes32 args, bytes32 r, bytes32 s, bytes[] calldata pythUpdateData) external;
 
   /**
    * @notice Calldata efficient wrapper of the withdraw function, withdrawing to the caller
@@ -40,7 +40,7 @@ interface IL2Pool {
    * type(uint256).max
    * @dev assetId is the index of the asset in the reservesList.
    */
-  function withdraw(bytes32 args) external;
+  function withdraw(bytes32 args, bytes[] calldata pythUpdateData) external;
 
   /**
    * @notice Calldata efficient wrapper of the borrow function, borrowing on behalf of the caller
@@ -51,7 +51,7 @@ interface IL2Pool {
    * type(uint256).max
    * @dev assetId is the index of the asset in the reservesList.
    */
-  function borrow(bytes32 args) external;
+  function borrow(bytes32 args, bytes[] calldata pythUpdateData) external;
 
   /**
    * @notice Calldata efficient wrapper of the repay function, repaying on behalf of the caller
@@ -63,22 +63,28 @@ interface IL2Pool {
    * @dev assetId is the index of the asset in the reservesList.
    * @return The final amount repaid
    */
-  function repay(bytes32 args) external returns (uint256);
+  function repay(bytes32 args, bytes[] calldata pythUpdateData) external returns (uint256);
 
-  /**
-   * @notice Calldata efficient wrapper of the repayWithPermit function, repaying on behalf of the caller
-   * @param args Arguments for the repayWithPermit function packed in one bytes32
-   *    64 bits    8 bits        32 bits                   8 bits               128 bits       16 bits
-   * | 0-padding | permitV | shortenedDeadline | shortenedInterestRateMode | shortenedAmount | assetId |
-   * @dev the shortenedAmount is cast to 256 bits at decode time, if type(uint128).max the value will be expanded to
-   * type(uint256).max
-   * @dev assetId is the index of the asset in the reservesList.
-   * @param r The R parameter of ERC712 permit sig
-   * @param s The S parameter of ERC712 permit sig
-   * @return The final amount repaid
-   */
-  function repayWithPermit(bytes32 args, bytes32 r, bytes32 s) external returns (uint256);
-
+  // /**
+  //  * @notice Calldata efficient wrapper of the repayWithPermit function, repaying on behalf of the caller
+  //  * @param args Arguments for the repayWithPermit function packed in one bytes32
+  //  *    64 bits    8 bits        32 bits                   8 bits               128 bits       16 bits
+  //  * | 0-padding | permitV | shortenedDeadline | shortenedInterestRateMode | shortenedAmount | assetId |
+  //  * @dev the shortenedAmount is cast to 256 bits at decode time, if type(uint128).max the value will be expanded to
+  //  * type(uint256).max
+  //  * @dev assetId is the index of the asset in the reservesList.
+  //  * @param r The R parameter of ERC712 permit sig
+  //  * @param s The S parameter of ERC712 permit sig
+  //  * @return The final amount repaid
+  //  */
+  // function repayWithPermit(bytes32 args, bytes32 r, bytes32 s, bytes[] calldata pythUpdateData) external returns (uint256);
+  function repayWithPermit(RepayWithPermitArgs memory args) external returns (uint256);
+   struct RepayWithPermitArgs {
+      bytes32 args;
+        bytes32 r;
+        bytes32 s;
+        bytes[] pythUpdateData;
+    }
   /**
    * @notice Calldata efficient wrapper of the repayWithATokens function
    * @param args Arguments for the repayWithATokens function packed in one bytes32
@@ -89,7 +95,7 @@ interface IL2Pool {
    * @dev assetId is the index of the asset in the reservesList.
    * @return The final amount repaid
    */
-  function repayWithATokens(bytes32 args) external returns (uint256);
+  function repayWithATokens(bytes32 args, bytes[] calldata pythUpdateData) external returns (uint256);
 
   /**
    * @notice Calldata efficient wrapper of the swapBorrowRateMode function

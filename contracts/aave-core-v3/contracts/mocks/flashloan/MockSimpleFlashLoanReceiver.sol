@@ -47,7 +47,7 @@ contract MockFlashLoanSimpleReceiver is FlashLoanSimpleReceiverBase {
     uint256 amount,
     uint256 premium,
     address, // initiator
-    bytes memory // params
+    bytes memory // params,
   ) public override returns (bool) {
     if (_failExecution) {
       emit ExecutedWithFail(asset, amount, premium);

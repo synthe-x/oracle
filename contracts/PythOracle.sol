@@ -19,7 +19,8 @@ import "hardhat/console.sol";
  */
 contract PythOracle is IPythOracle, AccessControl {
     SyntheX public immutable synthex;
-    IPyth public pyth;
+    // IPyth public pyth;
+    address pyth;
     bytes32 constant PRICE_UPDATER = keccak256("PRICE_UPDATER");
 
     bool public constant IS_PYTH_ORACLE = true;
@@ -51,7 +52,7 @@ contract PythOracle is IPythOracle, AccessControl {
      */
     constructor(
         SyntheX _synthex,
-        IPyth _pyth,
+        address _pyth,
         address pool,
         address[] memory assets,
         bytes32[] memory sources,
@@ -139,17 +140,16 @@ contract PythOracle is IPythOracle, AccessControl {
     /// @inheritdoc IPythOracleGetter
     function getAssetPrice(address asset) public view override returns (uint) {
         bytes32 source = assetsSources[asset];
-       
+
         if (BASE_CURRENCYS[asset] != 0) {
             return BASE_CURRENCYS[asset];
         } else if (source == bytes32(0)) {
             return _fallbackOracle.getAssetPrice(asset);
         } else {
-             console.logBytes32(source);
-            PythStructs.Price memory currentBasePrice = pyth.getPriceUnsafe(
-                source
-            );
-             console.log("price from pyth contract", asset);
+            console.log("pyth", pyth);
+            PythStructs.Price memory currentBasePrice = IPyth(pyth)
+                .getPriceUnsafe(source);
+            console.log("price from pyth contract", pyth);
             uint256 price = convertToUint(currentBasePrice, 8);
 
             if (price > 0) {
@@ -160,11 +160,10 @@ contract PythOracle is IPythOracle, AccessControl {
         }
     }
 
-    function updatePrices(
-        bytes[] calldata pythUpdateData
-    ) external override onlyRole(PRICE_UPDATER) {
-        uint updateFee = pyth.getUpdateFee(pythUpdateData);
-        pyth.updatePriceFeeds{value: updateFee}(pythUpdateData);
+    function updatePrices(bytes[] calldata pythUpdateData) external override {
+        uint updateFee = IPyth(pyth).getUpdateFee(pythUpdateData);
+        IPyth(pyth).updatePriceFeeds{value: updateFee}(pythUpdateData);
+        console.log("priceUpdate");
     }
 
     function convertToUint(

@@ -50,10 +50,11 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
   function depositETH(
     address,
     address onBehalfOf,
-    uint16 referralCode
+    uint16 referralCode,
+    bytes[] memory pythUpdateData 
   ) external payable override {
     WETH.deposit{value: msg.value}();
-    POOL.deposit(address(WETH), msg.value, onBehalfOf, referralCode);
+    POOL.deposit(address(WETH), msg.value, onBehalfOf, referralCode,pythUpdateData);
   }
 
   /**
@@ -75,7 +76,7 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
       amountToWithdraw = userBalance;
     }
     aWETH.transferFrom(msg.sender, address(this), amountToWithdraw);
-    POOL.withdraw(address(WETH), amountToWithdraw, address(this));
+    POOL.withdraw(address(WETH), amountToWithdraw, address(this), new bytes[](0));
     WETH.withdraw(amountToWithdraw);
     _safeTransferETH(to, amountToWithdraw);
   }
@@ -107,7 +108,7 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
     }
     require(msg.value >= paybackAmount, 'msg.value is less than repayment amount');
     WETH.deposit{value: paybackAmount}();
-    POOL.repay(address(WETH), msg.value, rateMode, onBehalfOf);
+    POOL.repay(address(WETH), msg.value, rateMode, onBehalfOf,new bytes[](0));
 
     // refund remaining dust eth
     if (msg.value > paybackAmount) _safeTransferETH(msg.sender, msg.value - paybackAmount);
@@ -125,7 +126,7 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
     uint256 interestRateMode,
     uint16 referralCode
   ) external override {
-    POOL.borrow(address(WETH), amount, interestRateMode, referralCode, msg.sender);
+    POOL.borrow(address(WETH), amount, interestRateMode, referralCode, msg.sender,new bytes[](0));
     WETH.withdraw(amount);
     _safeTransferETH(msg.sender, amount);
   }
@@ -159,7 +160,7 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
     // permit `amount` rather than `amountToWithdraw` to make it easier for front-ends and integrators
     aWETH.permit(msg.sender, address(this), amount, deadline, permitV, permitR, permitS);
     aWETH.transferFrom(msg.sender, address(this), amountToWithdraw);
-    POOL.withdraw(address(WETH), amountToWithdraw, address(this));
+    POOL.withdraw(address(WETH), amountToWithdraw, address(this),new bytes[](0));
     WETH.withdraw(amountToWithdraw);
     _safeTransferETH(to, amountToWithdraw);
   }

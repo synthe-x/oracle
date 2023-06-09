@@ -134,7 +134,7 @@ const func: DeployFunction = async function ({
 func.id = `PoolInitalization:${MARKET_NAME}:aave-v3-core@${V3_CORE_VERSION}`;
 
 func.tags = ["market", "init-pool"];
-func.dependencies = ["before-deploy", "core", "periphery-pre", "provider"];
+func.dependencies = ["before-deploy", "core", "periphery-pre", "provider", "oracle"];
 
 func.skip = async () => checkRequiredEnvironment();
 

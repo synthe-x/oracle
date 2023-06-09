@@ -22,18 +22,18 @@ contract FlashloanAttacker is FlashLoanSimpleReceiverBase {
     _pool = IPool(provider.getPool());
   }
 
-  function supplyAsset(address asset, uint256 amount) public {
+  function supplyAsset(address asset, uint256 amount, bytes[] calldata pythUpdateData ) public {
     MintableERC20 token = MintableERC20(asset);
     token.mint(amount);
     token.approve(address(_pool), type(uint256).max);
-    _pool.supply(asset, amount, address(this), 0);
+    _pool.supply(asset, amount, address(this), 0,pythUpdateData);
   }
 
-  function _innerBorrow(address asset) internal {
+  function _innerBorrow(address asset, bytes[] memory pythUpdateData) internal {
     DataTypes.ReserveData memory config = _pool.getReserveData(asset);
     IERC20 token = IERC20(asset);
     uint256 avail = token.balanceOf(config.aTokenAddress);
-    _pool.borrow(asset, avail, 2, 0, address(this));
+    _pool.borrow(asset, avail, 2, 0, address(this), pythUpdateData);
   }
 
   function executeOperation(
@@ -41,13 +41,13 @@ contract FlashloanAttacker is FlashLoanSimpleReceiverBase {
     uint256 amount,
     uint256 premium,
     address, // initiator
-    bytes memory // params
+    bytes memory // params,
   ) public override returns (bool) {
     MintableERC20 token = MintableERC20(asset);
     uint256 amountToReturn = amount.add(premium);
 
     // Also do a normal borrow here in the middle
-    _innerBorrow(asset);
+    _innerBorrow(asset,new bytes[](0));
 
     token.mint(premium);
     IERC20(asset).approve(address(POOL), amountToReturn);
