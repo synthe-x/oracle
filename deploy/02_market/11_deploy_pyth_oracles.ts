@@ -45,11 +45,11 @@ const func: DeployFunction = async function ({
         pythAggregators
     );
     assets = assets.map((asset: string) => asset.toLocaleLowerCase());
-    const _synthex = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+    const _synthex = "0xf99Ee3c876aaa586511051B085991f0221De1fd7";
 
     const configPriceOracle = (await deployments.get(ORACLE_ID)).address;
-    console.log("asset", assets);
-    console.log("sources", sources);
+    // console.log("asset", assets);
+    // console.log("sources", sources);
     const oracleAddress = getAddress(configPriceOracle);
     const fallbackOracleAddress = oracleAddress;
     const pyth = poolConfig.PythId;

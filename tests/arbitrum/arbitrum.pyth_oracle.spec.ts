@@ -70,7 +70,7 @@ describe("Testing Oracles", function () {
   });
 
   describe("Test pyth oracle", () => {
-    it("getting price from pyth oracle", async () => {
+    it("User supply usdc", async () => {
       const userAddress = await user.getAddress();
       //  wrapper = await getWrappedTokenGateway();
       const pythOracle = await getPythOracle();
@@ -100,7 +100,7 @@ describe("Testing Oracles", function () {
 
     it("User2 Borrow usdc", async () => {
       // supply to pool
-      
+      // console.log(priceFeedUpdateData)
       const pool = await getPool();
       await expect(
         wrapper
