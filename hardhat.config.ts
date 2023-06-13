@@ -12,6 +12,7 @@ import {
   eEthereumNetwork,
   eFantomNetwork,
   eHarmonyNetwork,
+  eMantleNetwork,
   eOptimismNetwork,
   ePolygonNetwork,
   eTenderly,
@@ -148,6 +149,15 @@ export default {
       eArbitrumNetwork.goerliNitro,
       421613
     ),
+    [eMantleNetwork.mantleTestnet]: {
+      ...getCommonNetworkConfig(
+        eMantleNetwork.mantleTestnet,
+        5001
+        ),
+        accounts : [process.env.PRIVATE_KEY as string]
+      }
+        
+      
   },
   namedAccounts: {
     ...DEFAULT_NAMED_ACCOUNTS,

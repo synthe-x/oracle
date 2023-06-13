@@ -17,7 +17,8 @@ export type eNetwork =
   | eHarmonyNetwork
   | eFantomNetwork
   | eOptimismNetwork
-  | eTenderlyNetwork;
+  | eTenderlyNetwork
+  | eMantleNetwork;
 
 type eTenderlyNetwork = "tenderly";
 
@@ -47,6 +48,11 @@ export enum eEthereumNetwork {
 export enum ePolygonNetwork {
   polygon = "polygon",
   mumbai = "mumbai",
+}
+
+export enum eMantleNetwork{
+  mantleTestnet = "mantleTestnet",
+  mantle = "mantle"
 }
 
 export enum eXDaiNetwork {
@@ -463,6 +469,10 @@ export interface iArbitrumParamsPerNetwork<T> {
   [eArbitrumNetwork.arbitrumGoerli]: T;
 }
 
+export interface iMantleParamsPerNetwork<T> {
+  [eMantleNetwork.mantle]: T;
+  [eMantleNetwork.mantleTestnet]: T;
+}
 export interface iParamsPerPool<T> {
   [AavePools.proto]: T;
   [AavePools.matic]: T;
@@ -504,6 +514,7 @@ export interface EMode {
 }
 
 export interface IBaseConfiguration {
+  SynthexAddress?: tEthereumAddress;
   MarketId: string;
   ATokenNamePrefix: string;
   StableDebtTokenNamePrefix: string;
@@ -521,9 +532,9 @@ export interface IBaseConfiguration {
   StableDebtTokenImplementation?: iParamsPerNetwork<tEthereumAddress>;
   VariableDebtTokenImplementation?: iParamsPerNetwork<tEthereumAddress>;
   ReserveAssets?: iParamsPerNetwork<SymbolMap<tEthereumAddress>>;
-  OracleQuoteCurrency: string;
-  OracleQuoteUnit: string;
-  OracleQuoteCurrencyAddress: tEthereumAddress;
+  OracleQuoteCurrency: string | string[];
+  OracleQuoteUnit: string | string[];
+  OracleQuoteCurrencyAddress: tEthereumAddress | tEthereumAddress[];
   ReservesConfig: SymbolMap<IReserveParams>;
   WrappedNativeTokenSymbol: string; // ex: WETH or WMATIC
   IncentivesConfig: IncentivesConfig;

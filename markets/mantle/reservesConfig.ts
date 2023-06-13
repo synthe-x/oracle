@@ -4,25 +4,9 @@ import {
   rateStrategyVolatileOne,
   rateStrategyStableOne,
   rateStrategyStableTwo,
-} from "./rateStrategies";
+} from "../aave/rateStrategies";
 
-export const strategyDAI: IReserveParams = {
-  strategy: rateStrategyStableTwo,
-  baseLTVAsCollateral: "7500",
-  liquidationThreshold: "8000",
-  liquidationBonus: "10500",
-  liquidationProtocolFee: "1000",
-  borrowingEnabled: true,
-  stableBorrowRateEnabled: true,
-  flashLoanEnabled: true,
-  reserveDecimals: "18",
-  aTokenImpl: eContractid.AToken,
-  reserveFactor: "1000",
-  supplyCap: "2000000000",
-  borrowCap: "0",
-  debtCeiling: "0",
-  borrowableIsolation: true,
-};
+
 
 export const strategyUSDC: IReserveParams = {
   strategy: rateStrategyStableOne,
@@ -36,31 +20,30 @@ export const strategyUSDC: IReserveParams = {
   reserveDecimals: "6",
   aTokenImpl: eContractid.AToken,
   reserveFactor: "1000",
-  supplyCap: "2000000000",
+  supplyCap: "0",
   borrowCap: "0",
   debtCeiling: "0",
   borrowableIsolation: true,
 };
 
-export const strategyAAVE: IReserveParams = {
+export const strategyETH: IReserveParams = {
   strategy: rateStrategyVolatileOne,
-  baseLTVAsCollateral: "5000",
-  liquidationThreshold: "6500",
-  liquidationBonus: "11000",
+  baseLTVAsCollateral: "8000",
+  liquidationThreshold: "8250",
+  liquidationBonus: "10500",
   liquidationProtocolFee: "1000",
-  borrowingEnabled: false,
+  borrowingEnabled: true,
   stableBorrowRateEnabled: false,
   flashLoanEnabled: true,
   reserveDecimals: "18",
   aTokenImpl: eContractid.AToken,
-  reserveFactor: "0",
+  reserveFactor: "1000",
   supplyCap: "0",
   borrowCap: "0",
   debtCeiling: "0",
   borrowableIsolation: false,
 };
-
-export const strategyWETH: IReserveParams = {
+export const strategycETH: IReserveParams = {
   strategy: rateStrategyVolatileOne,
   baseLTVAsCollateral: "8000",
   liquidationThreshold: "8250",
@@ -78,25 +61,27 @@ export const strategyWETH: IReserveParams = {
   borrowableIsolation: false,
 };
 
-export const strategyLINK: IReserveParams = {
+export const strategyBIT: IReserveParams = {
   strategy: rateStrategyVolatileOne,
-  baseLTVAsCollateral: "7000",
-  liquidationThreshold: "7500",
-  liquidationBonus: "11000",
+  baseLTVAsCollateral: "8000",
+  liquidationThreshold: "8250",
+  liquidationBonus: "10500",
   liquidationProtocolFee: "1000",
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
   flashLoanEnabled: true,
   reserveDecimals: "18",
   aTokenImpl: eContractid.AToken,
-  reserveFactor: "2000",
+  reserveFactor: "1000",
   supplyCap: "0",
   borrowCap: "0",
   debtCeiling: "0",
   borrowableIsolation: false,
 };
 
-export const strategyWBTC: IReserveParams = {
+
+
+export const strategycBTC: IReserveParams = {
   strategy: rateStrategyVolatileOne,
   baseLTVAsCollateral: "7000",
   liquidationThreshold: "7500",
@@ -123,31 +108,13 @@ export const strategyUSDT: IReserveParams = {
   borrowingEnabled: true,
   stableBorrowRateEnabled: true,
   flashLoanEnabled: true,
-  reserveDecimals: "18",
+  reserveDecimals: "8",
   aTokenImpl: eContractid.AToken,
   reserveFactor: "1000",
   supplyCap: "0",
   borrowCap: "0",
   debtCeiling: "0",
   borrowableIsolation: true,
-};
-
-export const strategyEURS: IReserveParams = {
-  strategy: rateStrategyStableOne,
-  baseLTVAsCollateral: "6500",
-  liquidationThreshold: "7000",
-  liquidationBonus: "10750",
-  liquidationProtocolFee: "1000",
-  borrowingEnabled: true,
-  stableBorrowRateEnabled: true,
-  flashLoanEnabled: true,
-  reserveDecimals: "2",
-  aTokenImpl: eContractid.AToken,
-  reserveFactor: "1000",
-  supplyCap: "0",
-  borrowCap: "0",
-  debtCeiling: "0",
-  borrowableIsolation: false,
 };
 
 
@@ -169,7 +136,113 @@ export const strategycUSD: IReserveParams = {
   borrowableIsolation: true,
 };
 
-export const strategyfUSD: IReserveParams = {
+export const strategysCOIN: IReserveParams = {
+  strategy: rateStrategyStableOne,
+  baseLTVAsCollateral: "7500",
+  liquidationThreshold: "8500",
+  liquidationBonus: "10500",
+  liquidationProtocolFee: "1000",
+  borrowingEnabled: true,
+  stableBorrowRateEnabled: true,
+  flashLoanEnabled: true,
+  reserveDecimals: "18",
+  aTokenImpl: eContractid.AToken,
+  reserveFactor: "1000",
+  supplyCap: "0",
+  borrowCap: "0",
+  debtCeiling: "0",
+  borrowableIsolation: true,
+};
+
+export const strategysAAPL: IReserveParams = {
+  strategy: rateStrategyStableOne,
+  baseLTVAsCollateral: "7500",
+  liquidationThreshold: "8500",
+  liquidationBonus: "10500",
+  liquidationProtocolFee: "1000",
+  borrowingEnabled: true,
+  stableBorrowRateEnabled: true,
+  flashLoanEnabled: true,
+  reserveDecimals: "18",
+  aTokenImpl: eContractid.AToken,
+  reserveFactor: "1000",
+  supplyCap: "0",
+  borrowCap: "0",
+  debtCeiling: "0",
+  borrowableIsolation: true,
+};
+export const strategysMSFT: IReserveParams = {
+  strategy: rateStrategyStableOne,
+  baseLTVAsCollateral: "7500",
+  liquidationThreshold: "8500",
+  liquidationBonus: "10500",
+  liquidationProtocolFee: "1000",
+  borrowingEnabled: true,
+  stableBorrowRateEnabled: true,
+  flashLoanEnabled: true,
+  reserveDecimals: "18",
+  aTokenImpl: eContractid.AToken,
+  reserveFactor: "1000",
+  supplyCap: "0",
+  borrowCap: "0",
+  debtCeiling: "0",
+  borrowableIsolation: true,
+};
+export const strategysGOOGL: IReserveParams = {
+  strategy: rateStrategyStableOne,
+  baseLTVAsCollateral: "7500",
+  liquidationThreshold: "8500",
+  liquidationBonus: "10500",
+  liquidationProtocolFee: "1000",
+  borrowingEnabled: true,
+  stableBorrowRateEnabled: true,
+  flashLoanEnabled: true,
+  reserveDecimals: "18",
+  aTokenImpl: eContractid.AToken,
+  reserveFactor: "1000",
+  supplyCap: "0",
+  borrowCap: "0",
+  debtCeiling: "0",
+  borrowableIsolation: true,
+};
+
+export const strategycXRP: IReserveParams = {
+  strategy: rateStrategyStableOne,
+  baseLTVAsCollateral: "7500",
+  liquidationThreshold: "8500",
+  liquidationBonus: "10500",
+  liquidationProtocolFee: "1000",
+  borrowingEnabled: true,
+  stableBorrowRateEnabled: true,
+  flashLoanEnabled: true,
+  reserveDecimals: "18",
+  aTokenImpl: eContractid.AToken,
+  reserveFactor: "1000",
+  supplyCap: "0",
+  borrowCap: "0",
+  debtCeiling: "0",
+  borrowableIsolation: true,
+};
+
+export const strategycBNB: IReserveParams = {
+  strategy: rateStrategyStableOne,
+  baseLTVAsCollateral: "7500",
+  liquidationThreshold: "8500",
+  liquidationBonus: "10500",
+  liquidationProtocolFee: "1000",
+  borrowingEnabled: true,
+  stableBorrowRateEnabled: true,
+  flashLoanEnabled: true,
+  reserveDecimals: "18",
+  aTokenImpl: eContractid.AToken,
+  reserveFactor: "1000",
+  supplyCap: "0",
+  borrowCap: "0",
+  debtCeiling: "0",
+  borrowableIsolation: true,
+};
+
+export const strategysUSD: IReserveParams = {
   strategy: rateStrategyStableOne,
   baseLTVAsCollateral: "7500",
   liquidationThreshold: "8500",

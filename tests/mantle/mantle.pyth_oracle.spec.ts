@@ -48,7 +48,7 @@ describe("Testing Oracles", function () {
 
 
   before(async () => {
-    expect(process.env.MARKET_NAME).equal("Arbitrum");
+    expect(process.env.MARKET_NAME).equal("Mantle");
 
     await hre.deployments.fixture(["market", "periphery-post", "after-deploy"]);
 
@@ -62,16 +62,21 @@ describe("Testing Oracles", function () {
 
     priceFeedUpdateData = await pythPriceService.getPriceFeedsUpdateData([
       "0x41f3625971ca2ed2263e78573fe5ce23e13d2558ed3f2e47ab0f84fb9e7ae722",
+      "0x0e9ec6a3f2fba0a3df73db71c84d736b8fc1970577639c9456a2fee0c8f66d93",
       "0xca80ba6dc32e08d06f1aa886011eed1d77c77be9eb761cc10d72b7d0a2fd57a6",
-      "0xca80ba6dc32e08d06f1aa886011eed1d77c77be9eb761cc10d72b7d0a2fd57a6",
-      "0xf9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b",
       "0x1fc18861232290221461220bd4e2acd1dcdfbc89c84092c93c18bdc7756c1588",
-      "0xc1b12769f6633798d45adfd62bfc70114839232e2949b01fb3d3f927d2606154",
-      "0xbcbdc2755bd74a2065f9d3283c2b8acbd898e473bdb90a6764b3dbd467c56ecd",
+      "0xecf553770d9b10965f8fb64771e93f5690a182edc32be4a3236e0caaa6e0581a",
+      "0xf9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b",
+      "0xca80ba6dc32e08d06f1aa886011eed1d77c77be9eb761cc10d72b7d0a2fd57a6",
+      "0xbfaf7739cb6fe3e1c57a0ac08e1d931e9e6062d476fa57804e165ab572b5b621",
+      "0xafcc9a5bb5eefd55e12b6f0b4c8e6bccf72b785134ee232a5d175afd082e8832",
+      "0xa29b53fbc56604ef1f2b65e89e48b0f09bb77b3fb890f4c70ee8cbd68a12a94b",
+      "0xabb1a3382ab1c96282e4ee8c847acc0efdb35f0564924b35f3246e8f401b2a3d",
+      "0x4e10201a9ad79892f1b4e9a468908f061f330272c7987ddc6506a254f77becd7",
     ]);
 
     pool = await getPool();
-    usdc = await ethers.getContractAt("MockToken", "0xe87Ad4b7a14D8759BC92DAced7Ba243a23aCEc03");
+    usdc = await ethers.getContractAt("MockToken", "0xc7bde95c4b5c62ce52b7edf8a2ab59437186028d");
     wrapper = await getWrappedTokenGateway();
   });
 
@@ -91,13 +96,13 @@ describe("Testing Oracles", function () {
 
       console.log("deposit");
 
-      await usdc.connect(user).mint(user.getAddress(), parseEther("1000000"));
+      await usdc.connect(user).mint(user.getAddress(), parseEther("1"));
       const balance = await usdc.connect(user).balanceOf(user.getAddress());
       await usdc.connect(user).approve(pool.address, parseEther("10000"));
 
       await expect(await pool.connect(user).supply(
         usdc.address,
-        parseEther("1000"),
+        parseEther("1"),
         userAddress,
         "0"
       )
@@ -114,14 +119,14 @@ describe("Testing Oracles", function () {
       await expect(
         wrapper
           .connect(user)
-          .depositETH(pool.address, await user2.getAddress(), 0, { value: parseEther("100") })
+          .depositETH(pool.address, await user2.getAddress(), 0, { value: parseEther("1000") })
       ).to.emit(pool, "Supply");
 
       console.log("deposit");
 
       await expect(await pool.connect(user2).borrow(
         usdc.address,
-        parseEther("100"),
+        "1000000",
         2,
         0,
         await user2.getAddress(),
@@ -137,7 +142,7 @@ describe("Testing Oracles", function () {
 
       await expect(await pool.connect(user2).repay(
         usdc.address,
-        parseEther("100"),
+        "1000000",
         2,
         await user2.getAddress()
       )
@@ -147,7 +152,7 @@ describe("Testing Oracles", function () {
 
     it("User1 withdraw usdc and ETH", async () => {
 
-      const weth = WRAPPED_NATIVE_TOKEN_PER_NETWORK["arbitrumGoerli"];
+      const weth = WRAPPED_NATIVE_TOKEN_PER_NETWORK["mantleTestnet"];
 
       const aTokenAddress = (await pool.getReserveData(weth)).aTokenAddress;
 
@@ -157,7 +162,7 @@ describe("Testing Oracles", function () {
 
       await expect(await pool.connect(user).withdraw(
         usdc.address,
-        parseEther("1000"),
+        parseEther("1"),
         await user.getAddress(),
         priceFeedUpdateData
       )

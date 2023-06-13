@@ -23,21 +23,19 @@ contract L2Pool is Pool, IL2Pool {
 
     /// @inheritdoc IL2Pool
     function supply(
-        bytes32 args,
-        bytes[] calldata pythUpdateData
+        bytes32 args
     ) external override {
         (address asset, uint256 amount, uint16 referralCode) = CalldataLogic
             .decodeSupplyParams(_reservesList, args);
 
-        supply(asset, amount, msg.sender, referralCode, pythUpdateData);
+        supply(asset, amount, msg.sender, referralCode);
     }
 
     /// @inheritdoc IL2Pool
     function supplyWithPermit(
         bytes32 args,
         bytes32 r,
-        bytes32 s,
-        bytes[] calldata pythUpdateData
+        bytes32 s
     ) external override {
         (
             address asset,
@@ -55,7 +53,6 @@ contract L2Pool is Pool, IL2Pool {
         _args.permitV = v;
         _args.permitR = r;
         _args.permitS = s;
-        _args.pythUpdateData = pythUpdateData;
         supplyWithPermit(_args);
     }
 
@@ -96,8 +93,7 @@ contract L2Pool is Pool, IL2Pool {
 
     /// @inheritdoc IL2Pool
     function repay(
-        bytes32 args,
-        bytes[] calldata pythUpdateData
+        bytes32 args
     ) external override returns (uint256) {
         (
             address asset,
@@ -106,7 +102,7 @@ contract L2Pool is Pool, IL2Pool {
         ) = CalldataLogic.decodeRepayParams(_reservesList, args);
 
         return
-            repay(asset, amount, interestRateMode, msg.sender, pythUpdateData);
+            repay(asset, amount, interestRateMode, msg.sender);
     }
 
     /// @inheritdoc IL2Pool
@@ -131,15 +127,13 @@ contract L2Pool is Pool, IL2Pool {
                 deadline,
                 v,
                 _args.r,
-                _args.s,
-                _args.pythUpdateData
+                _args.s
             );
     }
 
     /// @inheritdoc IL2Pool
     function repayWithATokens(
-        bytes32 args,
-        bytes[] calldata pythUpdateData
+        bytes32 args
     ) external override returns (uint256) {
         (
             address asset,
@@ -148,7 +142,7 @@ contract L2Pool is Pool, IL2Pool {
         ) = CalldataLogic.decodeRepayParams(_reservesList, args);
 
         return
-            repayWithATokens(asset, amount, interestRateMode, pythUpdateData);
+            repayWithATokens(asset, amount, interestRateMode);
     }
 
     /// @inheritdoc IL2Pool

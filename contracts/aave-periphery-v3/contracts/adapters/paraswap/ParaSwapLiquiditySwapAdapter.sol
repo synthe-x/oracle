@@ -137,7 +137,7 @@ contract ParaSwapLiquiditySwapAdapter is BaseParaSwapSellAdapter, ReentrancyGuar
 
     assetToSwapTo.approve(address(POOL), 0);
     assetToSwapTo.approve(address(POOL), amountReceived);
-    POOL.deposit(address(assetToSwapTo), amountReceived, msg.sender, 0, new bytes[](0));
+    POOL.deposit(address(assetToSwapTo), amountReceived, msg.sender, 0);
   }
 
   /**
@@ -191,7 +191,7 @@ contract ParaSwapLiquiditySwapAdapter is BaseParaSwapSellAdapter, ReentrancyGuar
 
     assetToSwapTo.approve(address(POOL), 0);
     assetToSwapTo.approve(address(POOL), amountReceived);
-    POOL.deposit(address(assetToSwapTo), amountReceived, initiator, 0, new bytes[](0));
+    POOL.deposit(address(assetToSwapTo), amountReceived, initiator, 0);
 
     _pullATokenAndWithdraw(
       address(assetToSwapFrom),

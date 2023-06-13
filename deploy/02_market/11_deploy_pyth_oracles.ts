@@ -22,6 +22,7 @@ import { parseUnits } from "ethers/lib/utils";
 import { MARKET_NAME } from "../../helpers/env";
 import { PoolAddressesProvider } from "../../typechain";
 import { getAddress } from "@ethersproject/address";
+import { BigNumber } from "ethers";
 
 const func: DeployFunction = async function ({
     getNamedAccounts,
@@ -35,7 +36,7 @@ const func: DeployFunction = async function ({
         process.env.FORK ? process.env.FORK : hre.network.name
     ) as eNetwork;
 
-    const { OracleQuoteUnit } = poolConfig as ICommonConfiguration;
+    const { OracleQuoteUnit, OracleQuoteCurrencyAddress, SynthexAddress, PythId } = poolConfig as ICommonConfiguration;
 
     const reserveAssets = await getReserveAddresses(poolConfig, network);
     const pythAggregators = await getPythOracles(poolConfig, network);
@@ -45,20 +46,40 @@ const func: DeployFunction = async function ({
         pythAggregators
     );
     assets = assets.map((asset: string) => asset.toLocaleLowerCase());
-    const _synthex = "0xf99Ee3c876aaa586511051B085991f0221De1fd7";
+    let _synthex = ZERO_ADDRESS;
 
     const configPriceOracle = (await deployments.get(ORACLE_ID)).address;
-    // console.log("asset", assets);
-    // console.log("sources", sources);
     const oracleAddress = getAddress(configPriceOracle);
     const fallbackOracleAddress = oracleAddress;
-    const pyth = poolConfig.PythId;
+    const pyth = PythId ?? ZERO_ADDRESS;
     const pool = ZERO_ADDRESS;
-    const units = parseUnits("1", OracleQuoteUnit);
-    const CUSD = "0xBcD77D9073d61A72bf5650D3c694ab0aD4384832".toLocaleLowerCase();
-    const FUSD = "0x2Ea0938813f8C04Cf6b34cA7828A45a7Aa1900D0".toLocaleLowerCase();
-    const BASE_CURRENCYS = [CUSD, FUSD];
-    const BASE_CURRENCY_UNITS = [units, units];
+    let BASE_CURRENCY_UNITS: BigNumber[];
+
+    if (Array.isArray(OracleQuoteUnit)) {
+        BASE_CURRENCY_UNITS = OracleQuoteUnit.map((unit: string) => parseUnits("1", unit));
+    }
+    else {
+        BASE_CURRENCY_UNITS = [parseUnits("1", OracleQuoteUnit)];
+    }
+
+    let BASE_CURRENCYS: string[];
+
+    if (Array.isArray(OracleQuoteCurrencyAddress)) {
+        BASE_CURRENCYS = OracleQuoteCurrencyAddress.map((address: string) => address.toLocaleLowerCase());
+    }
+    else {
+        BASE_CURRENCYS = [OracleQuoteCurrencyAddress.toLocaleLowerCase()];
+    }
+
+    if(SynthexAddress){
+        _synthex = SynthexAddress
+    }
+
+    // const units = parseUnits("1", OracleQuoteUnit);
+    // const CUSD = "0x1b88ABb8Bd559aecF682Aec5f554967d5394583F".toLocaleLowerCase();
+    // const SUSD = "0xe3c0de2996C03fB2d6090E652bd4311641117efd".toLocaleLowerCase();
+    // const BASE_CURRENCYS = [CUSD, SUSD];
+    // const BASE_CURRENCY_UNITS = [units, units];
 
     await deploy(PYTH_ORACLE_ID, {
         from: deployer,

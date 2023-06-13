@@ -11,7 +11,7 @@ import {IAaveIncentivesController} from '../../../interfaces/IAaveIncentivesCont
 import {IPoolAddressesProvider} from '../../../interfaces/IPoolAddressesProvider.sol';
 import {IPool} from '../../../interfaces/IPool.sol';
 import {IACLManager} from '../../../interfaces/IACLManager.sol';
-
+import "hardhat/console.sol";
 /**
  * @title IncentivizedERC20
  * @author Aave, inspired by the Openzeppelin ERC20 implementation

@@ -32,7 +32,7 @@ const func: DeployFunction = async function ({
     process.env.FORK ? process.env.FORK : hre.network.name
   ) as eNetwork;
 
-  const { OracleQuoteUnit } = poolConfig as ICommonConfiguration;
+  let { OracleQuoteUnit } = poolConfig as ICommonConfiguration;
 
   const { address: addressesProviderAddress } = await deployments.get(
     POOL_ADDRESSES_PROVIDER_ID
@@ -47,6 +47,9 @@ const func: DeployFunction = async function ({
     reserveAssets,
     chainlinkAggregators
   );
+  if(Array.isArray(OracleQuoteUnit)){
+    OracleQuoteUnit = OracleQuoteUnit[0]
+  }
 
   // Deploy AaveOracle
   await deploy(ORACLE_ID, {

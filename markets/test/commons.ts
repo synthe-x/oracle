@@ -6,6 +6,7 @@ import {
   eArbitrumNetwork,
   TransferStrategy,
   AssetType,
+  eMantleNetwork,
 } from "../../helpers/types";
 import {
   rateStrategyStableOne,
@@ -92,9 +93,11 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.main]: "0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c",
     [eArbitrumNetwork.arbitrumTestnet]:
       "0xeC67987831C4278160D8e652d3edb0Fc45B3766d",
-    [eArbitrumNetwork.arbitrumGoerli]:
-      "0xBf59B84c9a7aD688D87ABe3357f70039C1540006",
+    [eArbitrumNetwork.arbitrumGoerli]: ZERO_ADDRESS,
+      //"0xBf59B84c9a7aD688D87ABe3357f70039C1540006",
     [eEthereumNetwork.rinkeby]: ZERO_ADDRESS,
+    [eMantleNetwork.mantleTestnet]: ZERO_ADDRESS
+
   },
   FallbackOracle: {
     [eEthereumNetwork.kovan]: "0x50913E8E1c650E790F8a1E741FF9B1B1bB251dfe",
@@ -103,6 +106,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eArbitrumNetwork.arbitrumTestnet]: ZERO_ADDRESS,
     [eArbitrumNetwork.arbitrumGoerli]: ZERO_ADDRESS,
     [eEthereumNetwork.rinkeby]: ZERO_ADDRESS,
+    [eMantleNetwork.mantleTestnet]: ZERO_ADDRESS
   },
   ReservesConfig: {},
   IncentivesConfig: {
@@ -117,6 +121,12 @@ export const CommonsConfig: ICommonConfiguration = {
         StkAave: ZERO_ADDRESS,
       },
       [eArbitrumNetwork.arbitrumGoerli]: {
+        CRV: ZERO_ADDRESS,
+        REW: ZERO_ADDRESS,
+        BAL: ZERO_ADDRESS,
+        StkAave: ZERO_ADDRESS,
+      },
+      [eMantleNetwork.mantleTestnet]: {
         CRV: ZERO_ADDRESS,
         REW: ZERO_ADDRESS,
         BAL: ZERO_ADDRESS,
@@ -149,6 +159,12 @@ export const CommonsConfig: ICommonConfiguration = {
         StkAave: ZERO_ADDRESS,
       },
       [eArbitrumNetwork.arbitrumGoerli]: {
+        CRV: ZERO_ADDRESS,
+        REW: ZERO_ADDRESS,
+        BAL: ZERO_ADDRESS,
+        StkAave: ZERO_ADDRESS,
+      },
+      [eMantleNetwork.mantleTestnet]: {
         CRV: ZERO_ADDRESS,
         REW: ZERO_ADDRESS,
         BAL: ZERO_ADDRESS,

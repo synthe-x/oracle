@@ -16,7 +16,7 @@ interface IL2Pool {
    * type(uint256).max
    * @dev assetId is the index of the asset in the reservesList.
    */
-  function supply(bytes32 args, bytes[] calldata pythUpdateData) external;
+  function supply(bytes32 args) external;
 
   /**
    * @notice Calldata efficient wrapper of the supplyWithPermit function on behalf of the caller
@@ -29,7 +29,7 @@ interface IL2Pool {
    * @param r The R parameter of ERC712 permit sig
    * @param s The S parameter of ERC712 permit sig
    */
-  function supplyWithPermit(bytes32 args, bytes32 r, bytes32 s, bytes[] calldata pythUpdateData) external;
+  function supplyWithPermit(bytes32 args, bytes32 r, bytes32 s) external;
 
   /**
    * @notice Calldata efficient wrapper of the withdraw function, withdrawing to the caller
@@ -63,7 +63,7 @@ interface IL2Pool {
    * @dev assetId is the index of the asset in the reservesList.
    * @return The final amount repaid
    */
-  function repay(bytes32 args, bytes[] calldata pythUpdateData) external returns (uint256);
+  function repay(bytes32 args) external returns (uint256);
 
   // /**
   //  * @notice Calldata efficient wrapper of the repayWithPermit function, repaying on behalf of the caller
@@ -83,7 +83,6 @@ interface IL2Pool {
       bytes32 args;
         bytes32 r;
         bytes32 s;
-        bytes[] pythUpdateData;
     }
   /**
    * @notice Calldata efficient wrapper of the repayWithATokens function
@@ -95,7 +94,7 @@ interface IL2Pool {
    * @dev assetId is the index of the asset in the reservesList.
    * @return The final amount repaid
    */
-  function repayWithATokens(bytes32 args, bytes[] calldata pythUpdateData) external returns (uint256);
+  function repayWithATokens(bytes32 args) external returns (uint256);
 
   /**
    * @notice Calldata efficient wrapper of the swapBorrowRateMode function

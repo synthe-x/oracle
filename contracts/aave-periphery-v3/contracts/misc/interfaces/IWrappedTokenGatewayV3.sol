@@ -5,8 +5,7 @@ interface IWrappedTokenGatewayV3 {
   function depositETH(
     address pool,
     address onBehalfOf,
-    uint16 referralCode,
-    bytes[] memory pythUpdateData
+    uint16 referralCode
   ) external payable;
 
   function withdrawETH(

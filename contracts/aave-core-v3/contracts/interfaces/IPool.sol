@@ -275,8 +275,7 @@ interface IPool {
         address asset,
         uint256 amount,
         address onBehalfOf,
-        uint16 referralCode,
-        bytes[] memory pythUpdateData
+        uint16 referralCode
     ) external;
 
     // /**
@@ -316,7 +315,6 @@ interface IPool {
         uint8 permitV;
         bytes32 permitR;
         bytes32 permitS;
-        bytes[] pythUpdateData;
     }
 
     /**
@@ -377,8 +375,7 @@ interface IPool {
         address asset,
         uint256 amount,
         uint256 interestRateMode,
-        address onBehalfOf,
-        bytes[] memory pythUpdateData
+        address onBehalfOf
     ) external returns (uint256);
 
     /**
@@ -405,8 +402,7 @@ interface IPool {
         uint256 deadline,
         uint8 permitV,
         bytes32 permitR,
-        bytes32 permitS,
-        bytes[] memory pythUpdateData
+        bytes32 permitS
     ) external returns (uint256);
 
     /**
@@ -424,8 +420,7 @@ interface IPool {
     function repayWithATokens(
         address asset,
         uint256 amount,
-        uint256 interestRateMode,
-        bytes[] memory pythUpdateData
+        uint256 interestRateMode
     ) external returns (uint256);
 
     /**
@@ -815,7 +810,6 @@ interface IPool {
         address asset,
         uint256 amount,
         address onBehalfOf,
-        uint16 referralCode,
-        bytes[] memory pythUpdateData
+        uint16 referralCode
     ) external;
 }

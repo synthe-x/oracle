@@ -22,11 +22,11 @@ contract FlashloanAttacker is FlashLoanSimpleReceiverBase {
     _pool = IPool(provider.getPool());
   }
 
-  function supplyAsset(address asset, uint256 amount, bytes[] calldata pythUpdateData ) public {
+  function supplyAsset(address asset, uint256 amount ) public {
     MintableERC20 token = MintableERC20(asset);
     token.mint(amount);
     token.approve(address(_pool), type(uint256).max);
-    _pool.supply(asset, amount, address(this), 0,pythUpdateData);
+    _pool.supply(asset, amount, address(this), 0);
   }
 
   function _innerBorrow(address asset, bytes[] memory pythUpdateData) internal {

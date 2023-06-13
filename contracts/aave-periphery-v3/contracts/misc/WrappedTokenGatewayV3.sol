@@ -50,11 +50,10 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
   function depositETH(
     address,
     address onBehalfOf,
-    uint16 referralCode,
-    bytes[] memory pythUpdateData 
+    uint16 referralCode
   ) external payable override {
     WETH.deposit{value: msg.value}();
-    POOL.deposit(address(WETH), msg.value, onBehalfOf, referralCode,pythUpdateData);
+    POOL.deposit(address(WETH), msg.value, onBehalfOf, referralCode);
   }
 
   /**
@@ -108,7 +107,7 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
     }
     require(msg.value >= paybackAmount, 'msg.value is less than repayment amount');
     WETH.deposit{value: paybackAmount}();
-    POOL.repay(address(WETH), msg.value, rateMode, onBehalfOf,new bytes[](0));
+    POOL.repay(address(WETH), msg.value, rateMode, onBehalfOf);
 
     // refund remaining dust eth
     if (msg.value > paybackAmount) _safeTransferETH(msg.sender, msg.value - paybackAmount);

@@ -11,6 +11,7 @@ import {
   eAvalancheNetwork,
   eFantomNetwork,
   eOptimismNetwork,
+  eMantleNetwork,
 } from "./types";
 
 require("dotenv").config();
@@ -69,7 +70,7 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
   )}`,
   [eArbitrumNetwork.arbitrum]: `https://arb1.arbitrum.io/rpc`,
   [eArbitrumNetwork.arbitrumTestnet]: `https://rinkeby.arbitrum.io/rpc`,
-  [eArbitrumNetwork.arbitrumGoerli]: `https://arb-goerli.g.alchemy.com/v2/SOKc_kDyBiZzigpmJR0XwOMxi3B1OFNC`,
+  [eArbitrumNetwork.arbitrumGoerli]: "https://arbitrum-goerli.public.blastapi.io",//`https://arb-goerli.g.alchemy.com/v2/SOKc_kDyBiZzigpmJR0XwOMxi3B1OFNC`,
   [eEthereumNetwork.rinkeby]: `https://eth-rinkeby.alchemyapi.io/v2/${getAlchemyKey(
     eEthereumNetwork.rinkeby
   )}`,
@@ -89,6 +90,7 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
   [eEthereumNetwork.sepolia]: `https://eth-sepolia.g.alchemy.com/v2/${getAlchemyKey(
     eEthereumNetwork.sepolia
   )}`,
+  [eMantleNetwork.mantleTestnet]:  `https://rpc.testnet.mantle.xyz`, // `https://mantle-testnet.rpc.thirdweb.com`,
   [eArbitrumNetwork.goerliNitro]: `https://goerli-rollup.arbitrum.io/rpc`,
 };
 
@@ -101,6 +103,7 @@ export const LIVE_NETWORKS: iParamsPerNetwork<boolean> = {
   [eAvalancheNetwork.avalanche]: true,
   [eFantomNetwork.main]: true,
   [eOptimismNetwork.main]: true,
+  [eMantleNetwork.mantleTestnet]: true
 };
 
 const GAS_PRICE_PER_NET: iParamsPerNetwork<string | number> = {
@@ -159,6 +162,7 @@ const MNEMONICS: iParamsPerNetwork<string> = {
   [eArbitrumNetwork.arbitrumGoerli]: process.env.ARBITRUM_MNEMONIC,
   [ePolygonNetwork.mumbai]: process.env.POLYGON_MUMBAI_MNEMONIC,
   [ePolygonNetwork.polygon]: process.env.POLYGON_MNEMONIC,
+  [eMantleNetwork.mantleTestnet]: process.env.MANTLE_MNEMONIC
 };
 
 export const hardhatNetworkSettings = {

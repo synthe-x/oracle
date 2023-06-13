@@ -2,6 +2,8 @@ import { formatUnits } from "ethers/lib/utils";
 import { task } from "hardhat/config";
 import { hrtime } from "process";
 import { getWalletBalances } from "../../helpers";
+import {promises as fs} from "fs";
+import path from "path";
 
 task(`print-deployments`).setAction(
   async (_, { deployments, getNamedAccounts, ...hre }) => {
@@ -24,6 +26,11 @@ task(`print-deployments`).setAction(
         };
       }
     });
+  
+  let  _deployments = formattedDeployments;
+   
+  await fs.writeFile((path.join(__dirname+"../../../deployments/deployments.json")), JSON.stringify(_deployments));
+
     console.table(formattedDeployments);
 
     // Print Mintable Reserves and Rewards

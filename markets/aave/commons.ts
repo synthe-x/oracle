@@ -3,6 +3,7 @@ import {
   eAvalancheNetwork,
   eFantomNetwork,
   eHarmonyNetwork,
+  eMantleNetwork,
   eOptimismNetwork,
   ePolygonNetwork,
   TransferStrategy,
@@ -85,6 +86,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eArbitrumNetwork.arbitrumGoerli]:
       ZERO_ADDRESS,
     [eEthereumNetwork.rinkeby]: ZERO_ADDRESS,
+    [eMantleNetwork.mantleTestnet]: ZERO_ADDRESS
   },
   FallbackOracle: {
     [eEthereumNetwork.kovan]: ZERO_ADDRESS,
@@ -93,6 +95,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eArbitrumNetwork.arbitrumTestnet]: ZERO_ADDRESS,
     [eArbitrumNetwork.arbitrumGoerli]: ZERO_ADDRESS,
     [eEthereumNetwork.rinkeby]: ZERO_ADDRESS,
+    [eMantleNetwork.mantleTestnet]: ZERO_ADDRESS
   },
   ReservesConfig: {},
   IncentivesConfig: {
@@ -117,6 +120,12 @@ export const CommonsConfig: ICommonConfiguration = {
         BAL: ZERO_ADDRESS,
         StkAave: ZERO_ADDRESS,
       },
+      [eMantleNetwork.mantleTestnet]: {
+        CRV: ZERO_ADDRESS,
+        REW: ZERO_ADDRESS,
+        BAL: ZERO_ADDRESS,
+        StkAave: ZERO_ADDRESS,
+      },
       [eEthereumNetwork.kovan]: {
         StkAave: ZERO_ADDRESS,
       },
@@ -132,6 +141,12 @@ export const CommonsConfig: ICommonConfiguration = {
         BAL: ZERO_ADDRESS,
       },
       [eArbitrumNetwork.arbitrumGoerli]: {
+        StkAave: ZERO_ADDRESS,
+        CRV: ZERO_ADDRESS,
+        REW: ZERO_ADDRESS,
+        BAL: ZERO_ADDRESS,
+      },
+      [eMantleNetwork.mantleTestnet]: {
         StkAave: ZERO_ADDRESS,
         CRV: ZERO_ADDRESS,
         REW: ZERO_ADDRESS,
@@ -209,6 +224,38 @@ export const CommonsConfig: ICommonConfiguration = {
           transferStrategyParams: "0",
         },
       ],
+      [eMantleNetwork.mantleTestnet]: [
+        {
+          emissionPerSecond: "34629756533",
+          duration: 7890000,
+          asset: "DAI",
+          assetType: AssetType.AToken,
+          reward: "CRV",
+          rewardOracle: "0",
+          transferStrategy: TransferStrategy.PullRewardsStrategy,
+          transferStrategyParams: "0",
+        },
+        {
+          emissionPerSecond: "300801036720127500",
+          duration: 7890000,
+          asset: "USDC",
+          assetType: AssetType.AToken,
+          reward: "REW",
+          rewardOracle: "0",
+          transferStrategy: TransferStrategy.PullRewardsStrategy,
+          transferStrategyParams: "0",
+        },
+        {
+          emissionPerSecond: "300801036720127500",
+          duration: 7890000,
+          asset: "LINK",
+          assetType: AssetType.AToken,
+          reward: "REW",
+          rewardOracle: "0",
+          transferStrategy: TransferStrategy.PullRewardsStrategy,
+          transferStrategyParams: "0",
+        },
+      ],
     },
   },
   EModes: {
@@ -228,6 +275,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eArbitrumNetwork.arbitrumGoerli]: true,
     [eOptimismNetwork.main]: true,
     [eOptimismNetwork.testnet]: true,
+    [eMantleNetwork.mantleTestnet]: true
   },
   ParaswapRegistry: {
     [eEthereumNetwork.main]: "0xa68bEA62Dc4034A689AA0F58A76681433caCa663",

@@ -146,11 +146,8 @@ contract PythOracle is IPythOracle, AccessControl {
         } else if (source == bytes32(0)) {
             return _fallbackOracle.getAssetPrice(asset);
         } else {
-            console.log("pyth", pyth, asset);
-            console.logBytes32(source);
             PythStructs.Price memory currentBasePrice = IPyth(pyth)
                 .getPriceUnsafe(source);
-            console.log("price from pyth contract", pyth);
             uint256 price = convertToUint(currentBasePrice, 8);
 
             if (price > 0) {
