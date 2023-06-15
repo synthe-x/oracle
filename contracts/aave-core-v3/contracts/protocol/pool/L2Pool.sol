@@ -44,16 +44,8 @@ contract L2Pool is Pool, IL2Pool {
             uint256 deadline,
             uint8 v
         ) = CalldataLogic.decodeSupplyWithPermitParams(_reservesList, args);
-        SupplywithPermitArgs memory _args;
-        _args.asset = asset;
-        _args.amount = amount;
-        _args.onBehalfOf = msg.sender;
-        _args.referralCode = referralCode;
-        _args.deadline = deadline;
-        _args.permitV = v;
-        _args.permitR = r;
-        _args.permitS = s;
-        supplyWithPermit(_args);
+       
+        supplyWithPermit(asset, amount, msg.sender, referralCode, deadline, v, r, s);
     }
 
     /// @inheritdoc IL2Pool
@@ -107,7 +99,7 @@ contract L2Pool is Pool, IL2Pool {
 
     /// @inheritdoc IL2Pool
     function repayWithPermit(
-        RepayWithPermitArgs memory _args
+       bytes32 args, bytes32 r, bytes32 s
     ) external override returns (uint256) {
       
         (
@@ -116,7 +108,7 @@ contract L2Pool is Pool, IL2Pool {
             uint256 interestRateMode,
             uint256 deadline,
             uint8 v
-        ) = CalldataLogic.decodeRepayWithPermitParams(_reservesList, _args.args);
+        ) = CalldataLogic.decodeRepayWithPermitParams(_reservesList, args);
 
         return
             repayWithPermit(
@@ -126,8 +118,8 @@ contract L2Pool is Pool, IL2Pool {
                 msg.sender,
                 deadline,
                 v,
-                _args.r,
-                _args.s
+                r,
+                s
             );
     }
 

@@ -20,6 +20,7 @@ import {IACLManager} from "../../interfaces/IACLManager.sol";
 import {PoolStorage} from "./PoolStorage.sol";
 import {IPythOracle} from "../../../../IPythOracle.sol";
 import "hardhat/console.sol";
+
 /**
  * @title Pool contract
  * @author Aave
@@ -177,29 +178,35 @@ contract Pool is VersionedInitializable, PoolStorage, IPool {
         );
     }
 
-   
-
     /// @inheritdoc IPool
-    function supplyWithPermit(SupplywithPermitArgs memory args) public virtual override {
-       
-        IERC20WithPermit(args.asset).permit(
+    function supplyWithPermit(
+        address asset,
+        uint256 amount,
+        address onBehalfOf,
+        uint16 referralCode,
+        uint256 deadline,
+        uint8 permitV,
+        bytes32 permitR,
+        bytes32 permitS
+    ) public virtual override {
+        IERC20WithPermit(asset).permit(
             msg.sender,
             address(this),
-            args.amount,
-            args.deadline,
-            args.permitV,
-            args.permitR,
-            args.permitS
+            amount,
+            deadline,
+            permitV,
+            permitR,
+            permitS
         );
         SupplyLogic.executeSupply(
             _reserves,
             _reservesList,
-            _usersConfig[args.onBehalfOf],
+            _usersConfig[onBehalfOf],
             DataTypes.ExecuteSupplyParams({
-                asset: args.asset,
-                amount: args.amount,
-                onBehalfOf: args.onBehalfOf,
-                referralCode: args.referralCode
+                asset: asset,
+                amount: amount,
+                onBehalfOf: onBehalfOf,
+                referralCode: referralCode
             })
         );
     }
@@ -211,7 +218,9 @@ contract Pool is VersionedInitializable, PoolStorage, IPool {
         address to,
         bytes[] memory pythUpdateData
     ) public virtual override returns (uint256) {
-        IPythOracle(ADDRESSES_PROVIDER.getPriceOracle()).updatePrices(pythUpdateData);
+        IPythOracle(ADDRESSES_PROVIDER.getPriceOracle()).updatePrices(
+            pythUpdateData
+        );
         return
             SupplyLogic.executeWithdraw(
                 _reserves,
@@ -238,7 +247,9 @@ contract Pool is VersionedInitializable, PoolStorage, IPool {
         address onBehalfOf,
         bytes[] memory pythUpdateData
     ) public virtual override {
-        IPythOracle(ADDRESSES_PROVIDER.getPriceOracle()).updatePrices(pythUpdateData);
+        IPythOracle(ADDRESSES_PROVIDER.getPriceOracle()).updatePrices(
+            pythUpdateData
+        );
         BorrowLogic.executeBorrow(
             _reserves,
             _reservesList,
@@ -268,7 +279,6 @@ contract Pool is VersionedInitializable, PoolStorage, IPool {
         uint256 interestRateMode,
         address onBehalfOf
     ) public virtual override returns (uint256) {
-   
         return
             BorrowLogic.executeRepay(
                 _reserves,
@@ -297,7 +307,6 @@ contract Pool is VersionedInitializable, PoolStorage, IPool {
         bytes32 permitR,
         bytes32 permitS
     ) public virtual override returns (uint256) {
-     
         {
             IERC20WithPermit(asset).permit(
                 msg.sender,
@@ -336,7 +345,6 @@ contract Pool is VersionedInitializable, PoolStorage, IPool {
         uint256 amount,
         uint256 interestRateMode
     ) public virtual override returns (uint256) {
-    
         return
             BorrowLogic.executeRepay(
                 _reserves,

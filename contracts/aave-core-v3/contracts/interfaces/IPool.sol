@@ -293,29 +293,28 @@ interface IPool {
     //  * @param permitR The R parameter of ERC712 permit sig
     //  * @param permitS The S parameter of ERC712 permit sig
     //  */
-    // function supplyWithPermit(
-    //   address asset,
-    //   uint256 amount,
-    //   address onBehalfOf,
-    //   uint16 referralCode,
-    //   uint256 deadline,
-    //   uint8 permitV,
-    //   bytes32 permitR,
-    //   bytes32 permitS,
-    //   bytes[] calldata pythUpdateData
-    // ) external;
-    function supplyWithPermit(SupplywithPermitArgs memory args) external;
+    function supplyWithPermit(
+      address asset,
+      uint256 amount,
+      address onBehalfOf,
+      uint16 referralCode,
+      uint256 deadline,
+      uint8 permitV,
+      bytes32 permitR,
+      bytes32 permitS
+    ) external;
+    // function supplyWithPermit(SupplywithPermitArgs memory args) external;
 
-    struct SupplywithPermitArgs {
-        address asset;
-        uint256 amount;
-        address onBehalfOf; 
-        uint16 referralCode;
-        uint256 deadline;
-        uint8 permitV;
-        bytes32 permitR;
-        bytes32 permitS;
-    }
+    // struct SupplywithPermitArgs {
+    //     address asset;
+    //     uint256 amount;
+    //     address onBehalfOf; 
+    //     uint16 referralCode;
+    //     uint256 deadline;
+    //     uint8 permitV;
+    //     bytes32 permitR;
+    //     bytes32 permitS;
+    // }
 
     /**
      * @notice Withdraws an `amount` of underlying asset from the reserve, burning the equivalent aTokens owned

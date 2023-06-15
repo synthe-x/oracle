@@ -12,7 +12,7 @@ import {DataTypes} from '../types/DataTypes.sol';
 import {ReserveLogic} from './ReserveLogic.sol';
 import {ValidationLogic} from './ValidationLogic.sol';
 import {GenericLogic} from './GenericLogic.sol';
-
+import "hardhat/console.sol";
 /**
  * @title PoolLogic library
  * @author Aave
@@ -40,6 +40,7 @@ library PoolLogic {
     mapping(uint256 => address) storage reservesList,
     DataTypes.InitReserveParams memory params
   ) external returns (bool) {
+    console.log(params.asset);
     require(Address.isContract(params.asset), Errors.NOT_CONTRACT);
     reservesData[params.asset].init(
       params.aTokenAddress,

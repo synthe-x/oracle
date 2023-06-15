@@ -61,7 +61,7 @@ export const strategycETH: IReserveParams = {
   borrowableIsolation: false,
 };
 
-export const strategyBIT: IReserveParams = {
+export const strategyMNT: IReserveParams = {
   strategy: rateStrategyVolatileOne,
   baseLTVAsCollateral: "8000",
   liquidationThreshold: "8250",

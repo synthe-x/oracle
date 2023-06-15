@@ -2,7 +2,7 @@ import { formatUnits } from "ethers/lib/utils";
 import { task } from "hardhat/config";
 import { hrtime } from "process";
 import { getWalletBalances } from "../../helpers";
-import {promises as fs} from "fs";
+import { promises as fs } from "fs";
 import path from "path";
 
 task(`print-deployments`).setAction(
@@ -26,10 +26,10 @@ task(`print-deployments`).setAction(
         };
       }
     });
-  
-  let  _deployments = formattedDeployments;
-   
-  await fs.writeFile((path.join(__dirname+"../../../deployments/deployments.json")), JSON.stringify(_deployments));
+
+    let _deployments = formattedDeployments;
+    const chainId = await hre.getChainId()
+    await fs.writeFile((path.join(__dirname + `../../../deployments/${chainId}.json`)), JSON.stringify(_deployments));
 
     console.table(formattedDeployments);
 

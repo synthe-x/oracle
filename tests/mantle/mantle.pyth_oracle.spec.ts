@@ -76,7 +76,7 @@ describe("Testing Oracles", function () {
     ]);
 
     pool = await getPool();
-    usdc = await ethers.getContractAt("MockToken", "0xc7bde95c4b5c62ce52b7edf8a2ab59437186028d");
+    usdc = await ethers.getContractAt("MockToken", "0x0134369386a3aebcf0704946c0df89fe78fa2b50");
     wrapper = await getWrappedTokenGateway();
   });
 
