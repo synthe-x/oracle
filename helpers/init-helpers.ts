@@ -240,7 +240,7 @@ export const getPairsTokenAggregator = (
   },
   aggregatorsAddresses: { [tokenSymbol: string]: tEthereumAddress }
 ): [string[], string[]] => {
-  const { ETH, USD, ...assetsAddressesWithoutEth } = allAssetsAddresses;
+  const { USD, ...assetsAddressesWithoutEth } = allAssetsAddresses;
     
   const pairs = Object.entries(assetsAddressesWithoutEth).map(
     ([tokenSymbol, tokenAddress]) => {

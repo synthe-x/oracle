@@ -90,7 +90,7 @@ export const strategycBTC: IReserveParams = {
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
   flashLoanEnabled: true,
-  reserveDecimals: "8",
+  reserveDecimals: "18",
   aTokenImpl: eContractid.AToken,
   reserveFactor: "2000",
   supplyCap: "0",

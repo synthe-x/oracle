@@ -88,6 +88,7 @@ export const MOCK_CHAINLINK_AGGREGATORS_PRICES: { [key: string]: string } = {
   FEUR:  parseUnits("1.07", 18).toString(),
   FGBP: parseUnits("1.24", 18).toString(),
   FCNY: parseUnits("0.14", 18).toString(),
+  MNT:parseUnits("4000", 8).toString(),
 };
 
 export const chainlinkAggregatorProxy: Record<string, string> = {

@@ -67,7 +67,8 @@
     "deploy:market:aave:fork": "FORK=main MARKET_NAME=Aave npm run deploy",
     "deploy:market:eth:empty:fork": "FORK=main MARKET_NAME=Ethereum npm run deploy",
     "test1": "FORK=arbitrumGoerli Market_Name=Arbitrum npx hardhat test ./tests/arbitrum/arbitrum.pyth_oracle.spec.ts",
-    "test2": "FORK=mantleTestnet Market_Name=Mantle npx hardhat test ./tests/mantle/mantle.pyth_oracle.spec.ts"
+    "test2": "FORK=mantleTestnet Market_Name=Mantle npx hardhat test ./tests/mantle/mantle.pyth_oracle.spec.ts",
+    "test3": "FORK=mantleTestnet Market_Name=Mantle npx hardhat test ./tests/mantle/mantle.pyth_check.spec.ts"
   },
   "peerDependencies": {
     "hardhat": "^2.6.1"

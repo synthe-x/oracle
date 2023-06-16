@@ -28,7 +28,7 @@ export const MantleConfig: IAaveConfiguration = {
     StableDebtTokenNamePrefix: "Mantle",
     VariableDebtTokenNamePrefix: "Mantle",
     SymbolPrefix: "MNT",
-    OracleQuoteUnit: ['18', '18'],
+    OracleQuoteUnit: ['8', '8'],
     OracleQuoteCurrencyAddress: ["0xe49b5e1a76a9a081ca6be9ac31df63afc1814e2e", "0x1561ccba861ee39552da5d703b629b1b23ee1899"],
     OracleQuoteCurrency: ["CUSD", "SUSD"],
     ProviderId: 40,
