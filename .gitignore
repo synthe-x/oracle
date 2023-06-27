@@ -17,5 +17,5 @@ coverage
 .coverage_cache
 .coverage_contracts
 typechain
-types
+# types
 deployments
