@@ -1,1 +1,191 @@
-{"PoolAddressesProviderRegistry":{"address":"0xfaAddC93baf78e89DCf37bA67943E1bE8F37Bb8c"},"SupplyLogic":{"address":"0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB"},"BorrowLogic":{"address":"0x3155755b79aA083bd953911C92705B7aA82a18F9"},"LiquidationLogic":{"address":"0x5bf5b11053e734690269C6B9D438F8C9d48F528A"},"EModeLogic":{"address":"0xffa7CA1AEEEbBc30C874d32C7e22F052BbEa0429"},"BridgeLogic":{"address":"0x3aAde2dCD2Df6a8cAc689EE797591b2913658659"},"ConfiguratorLogic":{"address":"0xab16A69A5a8c12C732e0DEFF4BE56A70bb64c926"},"FlashLoanLogic":{"address":"0xE3011A37A904aB90C8881a99BD1F6E21401f1522"},"PoolLogic":{"address":"0x1f10F3Ba7ACB61b2F50B9d6DdCf91a6f787C0E82"},"TreasuryProxy":{"address":"0x457cCf29090fe5A24c19c1bc95F492168C0EaFdb"},"Treasury-Controller":{"address":"0x525C7063E7C20997BaaE9bDa922159152D0e8417"},"Treasury-Implementation":{"address":"0x38a024C0b412B9d1db8BC398140D00F5Af3093D4"},"PoolAddressesProvider-Mantle":{"address":"0x2a810409872AfC346F9B5b26571Fd6eC42EA4849"},"PoolDataProvider-Mantle":{"address":"0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849"},"AaveOracle-Mantle":{"address":"0xd6e1afe5cA8D00A2EFC01B89997abE2De47fdfAf"},"PythOracle-Mantle":{"address":"0x99dBE4AEa58E518C50a1c04aE9b48C9F6354612f"},"CalldataLogic":{"address":"0xCA8c8688914e0F7096c920146cd0Ad85cD7Ae8b9"},"L2Pool-Implementation":{"address":"0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"},"PoolConfigurator-Implementation":{"address":"0x976fcd02f7C4773dd89C309fBF55D5923B4c98a1"},"ReservesSetupHelper":{"address":"0xD42912755319665397FF090fBB63B1a31aE87Cee"},"ACLManager-Mantle":{"address":"0x927b167526bAbB9be047421db732C663a0b77B11"},"Pool-Proxy-Mantle":{"address":"0xF8ADc47E258b9a56a8E0A717572dB3F1Cb1b4cc4"},"PoolConfigurator-Proxy-Mantle":{"address":"0x508C2Ce8A50D14d75D0820Abe9C43f5a8044f020"},"L2Encoder":{"address":"0xFD6F7A6a5c21A3f503EBaE7a473639974379c351"},"EmissionManager":{"address":"0x0ed64d01D0B4B655E410EF1441dD677B695639E7"},"IncentivesV2-Implementation":{"address":"0x4bf010f1b9beDA5450a8dD702ED602A104ff65EE"},"IncentivesProxy":{"address":"0x114015Ae488322c11f4AF9ccC61E4a5Fe49037E3"},"AToken-Mantle":{"address":"0xefc1aB2475ACb7E60499Efb171D173be19928a05"},"DelegationAwareAToken-Mantle":{"address":"0xD49a0e9A4CD5979aE36840f542D2d7f02C4817Be"},"StableDebtToken-Mantle":{"address":"0xc582Bc0317dbb0908203541971a358c44b1F3766"},"VariableDebtToken-Mantle":{"address":"0xB377a2EeD7566Ac9fCb0BA673604F9BF875e2Bab"},"ReserveStrategy-rateStrategyVolatileOne":{"address":"0x8bCe54ff8aB45CB075b044AE117b8fD91F9351aB"},"ReserveStrategy-rateStrategyStableOne":{"address":"0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27"},"ReserveStrategy-rateStrategyStableTwo":{"address":"0xefAB0Beb0A557E452b398035eA964948c750b2Fd"},"CBTC-AToken-Mantle":{"address":"0xBAd1EbE469eE4eD9Ecc50043026cDff76Ee24Aa2"},"CBTC-VariableDebtToken-Mantle":{"address":"0x27e88B391Dd0421D2A9d2198DEE887e9c2D16F56"},"CBTC-StableDebtToken-Mantle":{"address":"0xCEa1c9366b805254c7ee8b0f1B1d8044f089794B"},"CETH-AToken-Mantle":{"address":"0x6398c2A1438F06962193fc19F1c345Fa6Fcf2803"},"CETH-VariableDebtToken-Mantle":{"address":"0x791c6b32D9F837b0B2648A9F2Fe4C50c05DaC5b5"},"CETH-StableDebtToken-Mantle":{"address":"0x67A453D9D42997B2c21A5FC4E87Df4032c4908b0"},"CUSD-AToken-Mantle":{"address":"0x40554b1F202067a751E98DB8D71Cd065c2Faf90c"},"CUSD-VariableDebtToken-Mantle":{"address":"0x025F03d3Df74479F716b6593209DDb74Ed76E627"},"CUSD-StableDebtToken-Mantle":{"address":"0x4203E1962e5FF8E833Eae9d4C082F15E711491E0"},"SAAPL-AToken-Mantle":{"address":"0x840382C8E93D106649c875301aBfE8686e8A61bF"},"SAAPL-VariableDebtToken-Mantle":{"address":"0x47093d794F9bEd9a06DC192C851Bb40f160Ef0e2"},"SAAPL-StableDebtToken-Mantle":{"address":"0xfa3bD24aa2a4d7C65afaa8C743f9c0FcB1E69468"},"SGOOGL-AToken-Mantle":{"address":"0xD22De45f9D0AE33Dc269758573987B82A39f435c"},"SGOOGL-VariableDebtToken-Mantle":{"address":"0x4BbA22dA55a37491F4261628E8295f74E6d12191"},"SGOOGL-StableDebtToken-Mantle":{"address":"0xA4280a3AB26df04265095645393276fbBD818eDF"},"SUSD-AToken-Mantle":{"address":"0x0Fc1EC98b2641be8c9dC6F9641Afe66d5aFfEF09"},"SUSD-VariableDebtToken-Mantle":{"address":"0xb17B23c116d4325A6e2C4cb04e688cC3A6F6A0C0"},"SUSD-StableDebtToken-Mantle":{"address":"0xc1AbFb55C788548E8Df612eFC8f0f2EA14D88474"},"USDC-AToken-Mantle":{"address":"0xa2D210381D49a74A3695C188e2408b035A8F55c1"},"USDC-VariableDebtToken-Mantle":{"address":"0xF19f3d70571c94Fc4A446bA6C4FFA9596d857fB9"},"USDC-StableDebtToken-Mantle":{"address":"0x457534CC792115F965c5bd33F97925324555eD45"},"MNT-AToken-Mantle":{"address":"0x552fCC02b8452c85FEBa2b558562A2B7D433599D"},"MNT-VariableDebtToken-Mantle":{"address":"0xa39eeC571b275F8172999Dce590EdEA3698C6564"},"MNT-StableDebtToken-Mantle":{"address":"0xC54d8b336c10FFe5a376919685cD0B9f56c279e7"},"ETH-AToken-Mantle":{"address":"0x73Da50e00367CE03C1e765C1909B60dca4Ad7E4C"},"ETH-VariableDebtToken-Mantle":{"address":"0xCeD42261EDc74f5AB8060AC14B2F7B21837F7086"},"ETH-StableDebtToken-Mantle":{"address":"0x0149174c66fDB1B46c386871086efb44804E3700"},"WrappedTokenGatewayV3":{"address":"0xB06c856C8eaBd1d8321b687E188204C1018BC4E5"},"WalletBalanceProvider":{"address":"0xaB7B4c595d3cE8C85e16DA86630f2fc223B05057"}}
+{
+    "PoolAddressesProviderRegistry": {
+        "address": "0xfaAddC93baf78e89DCf37bA67943E1bE8F37Bb8c"
+    },
+    "SupplyLogic": {
+        "address": "0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB"
+    },
+    "BorrowLogic": {
+        "address": "0x3155755b79aA083bd953911C92705B7aA82a18F9"
+    },
+    "LiquidationLogic": {
+        "address": "0x5bf5b11053e734690269C6B9D438F8C9d48F528A"
+    },
+    "EModeLogic": {
+        "address": "0xffa7CA1AEEEbBc30C874d32C7e22F052BbEa0429"
+    },
+    "BridgeLogic": {
+        "address": "0x3aAde2dCD2Df6a8cAc689EE797591b2913658659"
+    },
+    "ConfiguratorLogic": {
+        "address": "0xab16A69A5a8c12C732e0DEFF4BE56A70bb64c926"
+    },
+    "FlashLoanLogic": {
+        "address": "0xE3011A37A904aB90C8881a99BD1F6E21401f1522"
+    },
+    "PoolLogic": {
+        "address": "0x1f10F3Ba7ACB61b2F50B9d6DdCf91a6f787C0E82"
+    },
+    "TreasuryProxy": {
+        "address": "0x457cCf29090fe5A24c19c1bc95F492168C0EaFdb"
+    },
+    "Treasury-Controller": {
+        "address": "0x525C7063E7C20997BaaE9bDa922159152D0e8417"
+    },
+    "Treasury-Implementation": {
+        "address": "0x38a024C0b412B9d1db8BC398140D00F5Af3093D4"
+    },
+    "PoolAddressesProvider-Mantle": {
+        "address": "0x2a810409872AfC346F9B5b26571Fd6eC42EA4849"
+    },
+    "PoolDataProvider-Mantle": {
+        "address": "0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849"
+    },
+    "AaveOracle-Mantle": {
+        "address": "0xd6e1afe5cA8D00A2EFC01B89997abE2De47fdfAf"
+    },
+    "PythOracle-Mantle": {
+        "address": "0x99dBE4AEa58E518C50a1c04aE9b48C9F6354612f"
+    },
+    "CalldataLogic": {
+        "address": "0xCA8c8688914e0F7096c920146cd0Ad85cD7Ae8b9"
+    },
+    "L2Pool-Implementation": {
+        "address": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B"
+    },
+    "PoolConfigurator-Implementation": {
+        "address": "0x976fcd02f7C4773dd89C309fBF55D5923B4c98a1"
+    },
+    "ReservesSetupHelper": {
+        "address": "0xD42912755319665397FF090fBB63B1a31aE87Cee"
+    },
+    "ACLManager-Mantle": {
+        "address": "0x927b167526bAbB9be047421db732C663a0b77B11"
+    },
+    "Pool-Proxy-Mantle": {
+        "address": "0xF8ADc47E258b9a56a8E0A717572dB3F1Cb1b4cc4"
+    },
+    "PoolConfigurator-Proxy-Mantle": {
+        "address": "0x508C2Ce8A50D14d75D0820Abe9C43f5a8044f020"
+    },
+    "L2Encoder": {
+        "address": "0xFD6F7A6a5c21A3f503EBaE7a473639974379c351"
+    },
+    "EmissionManager": {
+        "address": "0x0ed64d01D0B4B655E410EF1441dD677B695639E7"
+    },
+    "IncentivesV2-Implementation": {
+        "address": "0x4bf010f1b9beDA5450a8dD702ED602A104ff65EE"
+    },
+    "IncentivesProxy": {
+        "address": "0x114015Ae488322c11f4AF9ccC61E4a5Fe49037E3"
+    },
+    "AToken-Mantle": {
+        "address": "0xefc1aB2475ACb7E60499Efb171D173be19928a05"
+    },
+    "DelegationAwareAToken-Mantle": {
+        "address": "0xD49a0e9A4CD5979aE36840f542D2d7f02C4817Be"
+    },
+    "StableDebtToken-Mantle": {
+        "address": "0xc582Bc0317dbb0908203541971a358c44b1F3766"
+    },
+    "VariableDebtToken-Mantle": {
+        "address": "0xB377a2EeD7566Ac9fCb0BA673604F9BF875e2Bab"
+    },
+    "ReserveStrategy-rateStrategyVolatileOne": {
+        "address": "0x8bCe54ff8aB45CB075b044AE117b8fD91F9351aB"
+    },
+    "ReserveStrategy-rateStrategyStableOne": {
+        "address": "0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27"
+    },
+    "ReserveStrategy-rateStrategyStableTwo": {
+        "address": "0xefAB0Beb0A557E452b398035eA964948c750b2Fd"
+    },
+    "CBTC-AToken-Mantle": {
+        "address": "0xBAd1EbE469eE4eD9Ecc50043026cDff76Ee24Aa2"
+    },
+    "CBTC-VariableDebtToken-Mantle": {
+        "address": "0x27e88B391Dd0421D2A9d2198DEE887e9c2D16F56"
+    },
+    "CBTC-StableDebtToken-Mantle": {
+        "address": "0xCEa1c9366b805254c7ee8b0f1B1d8044f089794B"
+    },
+    "CETH-AToken-Mantle": {
+        "address": "0x6398c2A1438F06962193fc19F1c345Fa6Fcf2803"
+    },
+    "CETH-VariableDebtToken-Mantle": {
+        "address": "0x791c6b32D9F837b0B2648A9F2Fe4C50c05DaC5b5"
+    },
+    "CETH-StableDebtToken-Mantle": {
+        "address": "0x67A453D9D42997B2c21A5FC4E87Df4032c4908b0"
+    },
+    "CUSD-AToken-Mantle": {
+        "address": "0x40554b1F202067a751E98DB8D71Cd065c2Faf90c"
+    },
+    "CUSD-VariableDebtToken-Mantle": {
+        "address": "0x025F03d3Df74479F716b6593209DDb74Ed76E627"
+    },
+    "CUSD-StableDebtToken-Mantle": {
+        "address": "0x4203E1962e5FF8E833Eae9d4C082F15E711491E0"
+    },
+    "SAAPL-AToken-Mantle": {
+        "address": "0x840382C8E93D106649c875301aBfE8686e8A61bF"
+    },
+    "SAAPL-VariableDebtToken-Mantle": {
+        "address": "0x47093d794F9bEd9a06DC192C851Bb40f160Ef0e2"
+    },
+    "SAAPL-StableDebtToken-Mantle": {
+        "address": "0xfa3bD24aa2a4d7C65afaa8C743f9c0FcB1E69468"
+    },
+    "SGOOGL-AToken-Mantle": {
+        "address": "0xD22De45f9D0AE33Dc269758573987B82A39f435c"
+    },
+    "SGOOGL-VariableDebtToken-Mantle": {
+        "address": "0x4BbA22dA55a37491F4261628E8295f74E6d12191"
+    },
+    "SGOOGL-StableDebtToken-Mantle": {
+        "address": "0xA4280a3AB26df04265095645393276fbBD818eDF"
+    },
+    "SUSD-AToken-Mantle": {
+        "address": "0x0Fc1EC98b2641be8c9dC6F9641Afe66d5aFfEF09"
+    },
+    "SUSD-VariableDebtToken-Mantle": {
+        "address": "0xb17B23c116d4325A6e2C4cb04e688cC3A6F6A0C0"
+    },
+    "SUSD-StableDebtToken-Mantle": {
+        "address": "0xc1AbFb55C788548E8Df612eFC8f0f2EA14D88474"
+    },
+    "USDC-AToken-Mantle": {
+        "address": "0xa2D210381D49a74A3695C188e2408b035A8F55c1"
+    },
+    "USDC-VariableDebtToken-Mantle": {
+        "address": "0xF19f3d70571c94Fc4A446bA6C4FFA9596d857fB9"
+    },
+    "USDC-StableDebtToken-Mantle": {
+        "address": "0x457534CC792115F965c5bd33F97925324555eD45"
+    },
+    "MNT-AToken-Mantle": {
+        "address": "0x552fCC02b8452c85FEBa2b558562A2B7D433599D"
+    },
+    "MNT-VariableDebtToken-Mantle": {
+        "address": "0xa39eeC571b275F8172999Dce590EdEA3698C6564"
+    },
+    "MNT-StableDebtToken-Mantle": {
+        "address": "0xC54d8b336c10FFe5a376919685cD0B9f56c279e7"
+    },
+    "ETH-AToken-Mantle": {
+        "address": "0x73Da50e00367CE03C1e765C1909B60dca4Ad7E4C"
+    },
+    "ETH-VariableDebtToken-Mantle": {
+        "address": "0xCeD42261EDc74f5AB8060AC14B2F7B21837F7086"
+    },
+    "ETH-StableDebtToken-Mantle": {
+        "address": "0x0149174c66fDB1B46c386871086efb44804E3700"
+    },
+    "WrappedTokenGatewayV3": {
+        "address": "0xB06c856C8eaBd1d8321b687E188204C1018BC4E5"
+    },
+    "WalletBalanceProvider": {
+        "address": "0xaB7B4c595d3cE8C85e16DA86630f2fc223B05057"
+    }
+}

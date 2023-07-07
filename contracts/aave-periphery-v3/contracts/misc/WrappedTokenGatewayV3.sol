@@ -12,7 +12,6 @@ import {UserConfiguration} from '../../../aave-core-v3/contracts/protocol/librar
 import {DataTypes} from '../../../aave-core-v3/contracts/protocol/libraries/types/DataTypes.sol';
 import {IWrappedTokenGatewayV3} from './interfaces/IWrappedTokenGatewayV3.sol';
 import {DataTypesHelper} from '../libraries/DataTypesHelper.sol';
-
 /**
  * @dev This contract is an upgrade of the WrappedTokenGatewayV3 contract, with immutable pool address.
  * This contract keeps the same interface of the deprecated WrappedTokenGatewayV3 contract.
@@ -64,7 +63,8 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
   function withdrawETH(
     address,
     uint256 amount,
-    address to
+    address to,
+    bytes[] memory pythUpdateData
   ) external override {
     IAToken aWETH = IAToken(POOL.getReserveData(address(WETH)).aTokenAddress);
     uint256 userBalance = aWETH.balanceOf(msg.sender);
@@ -75,7 +75,7 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
       amountToWithdraw = userBalance;
     }
     aWETH.transferFrom(msg.sender, address(this), amountToWithdraw);
-    POOL.withdraw(address(WETH), amountToWithdraw, address(this), new bytes[](0));
+    POOL.withdraw(address(WETH), amountToWithdraw, address(this), pythUpdateData);
     WETH.withdraw(amountToWithdraw);
     _safeTransferETH(to, amountToWithdraw);
   }
@@ -123,9 +123,10 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
     address,
     uint256 amount,
     uint256 interestRateMode,
-    uint16 referralCode
+    uint16 referralCode,
+    bytes[] memory pythUpdateData
   ) external override {
-    POOL.borrow(address(WETH), amount, interestRateMode, referralCode, msg.sender,new bytes[](0));
+    POOL.borrow(address(WETH), amount, interestRateMode, referralCode, msg.sender, pythUpdateData);
     WETH.withdraw(amount);
     _safeTransferETH(msg.sender, amount);
   }
@@ -146,7 +147,8 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
     uint256 deadline,
     uint8 permitV,
     bytes32 permitR,
-    bytes32 permitS
+    bytes32 permitS,
+    bytes[] memory pythUpdateData
   ) external override {
     IAToken aWETH = IAToken(POOL.getReserveData(address(WETH)).aTokenAddress);
     uint256 userBalance = aWETH.balanceOf(msg.sender);
@@ -159,7 +161,7 @@ contract WrappedTokenGatewayV3 is IWrappedTokenGatewayV3, Ownable {
     // permit `amount` rather than `amountToWithdraw` to make it easier for front-ends and integrators
     aWETH.permit(msg.sender, address(this), amount, deadline, permitV, permitR, permitS);
     aWETH.transferFrom(msg.sender, address(this), amountToWithdraw);
-    POOL.withdraw(address(WETH), amountToWithdraw, address(this),new bytes[](0));
+    POOL.withdraw(address(WETH), amountToWithdraw, address(this), pythUpdateData);
     WETH.withdraw(amountToWithdraw);
     _safeTransferETH(to, amountToWithdraw);
   }

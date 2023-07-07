@@ -8,7 +8,7 @@ This Node.js repository contains the configuration and deployment scripts for th
 2. If you want to add new oracle e.g add USDC on arbitrum then need to update following files
 a. aave-v3-deploy/markets/aave/reservesConfigs.ts
 b. aave-v3-deploy/markets/arbitrum/index.ts
-c. aave-v3-deploy/helpers/constants.ts
+c. aave-v3-deploy/helpers/constants.ts, update WRAPPED_NATIVE_TOKEN_PER_NETWORK token
 d. see packege.json test1 for deply using fork
 e. HARDHAT_NETWORK=mantleTestnet  npx hardhat deploy "to deploy on actual testnet"
 f. incase of fail deployment remove deployment file created during deployment

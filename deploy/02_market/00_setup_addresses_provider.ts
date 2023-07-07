@@ -81,12 +81,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     await addressesProviderInstance.setMarketId(poolConfig.MarketId)
   );
 
-  // set the PythId
-  // if(poolConfig.PythId)
-  //   await waitForTx(
-  //     await addressesProviderInstance.setPythId(poolConfig.PythId)
-  //   );
-
   // 3. Add AddressesProvider to Registry
   await addMarketToRegistry(
     poolConfig.ProviderId,

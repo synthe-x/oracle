@@ -11,7 +11,8 @@ interface IWrappedTokenGatewayV3 {
   function withdrawETH(
     address pool,
     uint256 amount,
-    address onBehalfOf
+    address onBehalfOf,
+     bytes[] memory pythUpdateData
   ) external;
 
   function repayETH(
@@ -25,7 +26,8 @@ interface IWrappedTokenGatewayV3 {
     address pool,
     uint256 amount,
     uint256 interestRateMode,
-    uint16 referralCode
+    uint16 referralCode,
+    bytes[] memory pythUpdateData
   ) external;
 
   function withdrawETHWithPermit(
@@ -35,6 +37,7 @@ interface IWrappedTokenGatewayV3 {
     uint256 deadline,
     uint8 permitV,
     bytes32 permitR,
-    bytes32 permitS
+    bytes32 permitS,
+     bytes[] memory pythUpdateData
   ) external;
 }

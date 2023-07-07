@@ -86,8 +86,8 @@ describe("Testing Oracles", function () {
     it("check pyth asset", async () => {
 
         const pythOracle = await getPythOracle();
-        const ETH = "0x43d9c2dec2a83079641feafdabc4719bb362aacf";
-        const price = await pythOracle.getSourceOfAsset(ETH);
+        const ETH = "0xC5463C3E462E730A7BF625569e96dD275D136D2d";
+        const price = await pythOracle.getAssetPrice(ETH);
         console.log(price);
     });
 

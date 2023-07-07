@@ -283,8 +283,8 @@ export const getPythOracles = async (
   poolConfig: IBaseConfiguration,
   network: eNetwork
 ) => {
-  // const isLive = hre.config.networks[network].live;
-  const isLive = true;
+  const isLive = hre.config.networks[network].live;
+  // const isLive = true;
   if (isLive) {
     console.log("[NOTICE] Using PythAggregator from configuration file");
     // console.log("--------------------------", poolConfig.PythAggregator,network);
